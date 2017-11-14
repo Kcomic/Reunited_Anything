@@ -1,0 +1,30 @@
+/* your styles go here */
+.pull-left {float:left;}
+.pull-right {float:right;}
+.text-center {text-align:center;}
+.btn-dl-size {
+	font-size: 24px;
+}
+.btn-margin {
+	margin-left: 15px;
+}
+.section--little-padding {
+	padding-top: 10px;
+  padding-bottom: 10px;
+}
+a.list-group-item {
+    height:auto;
+    min-height:90px;
+}
+a.list-group-item.active small {
+    color:#fff;
+}
+.section--have-padding {
+	padding-top: 40px;
+	padding-bottom: 40px;
+}
+.section--h2-padding {
+	padding-top: 25px;
+	padding-bottom: 5px;
+}
+span { font-weight: bold; }
