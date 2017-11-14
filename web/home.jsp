@@ -104,7 +104,8 @@
                                         if (chk == 0) {
 
                                     %> 
-                                    <a href="#" data-toggle="modal" data-target="#login-modal" class="btn navbar-btn btn-ghost"><i class="fa fa-sign-in"></i>ล็อคอินแล้วนะสาส</a>
+                                    <a href="#"><i class="fa fa-user"></i>น้องน้ำฝน</a>
+                                    <a href="#" data-toggle="modal" data-target="#login-modal" class="btn navbar-btn btn-ghost"><i class="fa fa-sign-out"></i>ออกจากระบบ</a>
           </div>
         </div>
       </div>
