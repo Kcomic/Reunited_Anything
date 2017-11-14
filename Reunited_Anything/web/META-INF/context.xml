@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<Context path="/Reunited_Anything">
-  <Resource auth="Container" driverClassName="com.mysql.jdbc.Driver" maxActive="20" maxIdle="10" maxWait="-1" name="reunited_anything" password="root" type="javax.sql.DataSource" url="jdbc:mysql://localhost:3306/reunited_anything?zeroDateTimeBehavior=convertToNull" username="root"/>
-  <Resource auth="Container" driverClassName="com.mysql.jdbc.Driver" maxActive="20" maxIdle="10" maxWait="-1" name="Reunited_Anything" password="root" type="javax.sql.DataSource" url="jdbc:mysql://localhost:3306/reunited_anything?zeroDateTimeBehavior=convertToNull" username="root"/>
-</Context>
