@@ -40,14 +40,14 @@
     <header class="header">
       <div role="navigation" class="navbar navbar-default">
         <div class="container">
-          <div class="navbar-header"><a href="index.html" class="navbar-brand">LOST&<span style="color: #000000;">FOUND</span></a>
+          <div class="navbar-header"><a href="home.jsp" class="navbar-brand">LOST&<span style="color: #000000;">FOUND</span></a>
             <div class="navbar-buttons">
               <button type="button" data-toggle="collapse" data-target=".navbar-collapse" class="navbar-toggle navbar-btn">Menu<i class="fa fa-align-justify"></i></button>
             </div>
           </div>
           <div id="navigation" class="collapse navbar-collapse navbar-right">
             <ul class="nav navbar-nav">
-              <li class="active"><a href="index.html">หน้าหลัก</a></li>
+              <li class="active"><a href="home.jsp">หน้าหลัก</a></li>
               <li><a href=#>หน้าอะไรไม่รู้</a></li>
               <!-- <li class="dropdown"><a href="#" data-toggle="dropdown" class="dropdown-toggle">Dropdown <b class="caret"></b></a>
                 <ul class="dropdown-menu">
