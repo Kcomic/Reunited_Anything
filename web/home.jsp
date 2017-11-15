@@ -30,7 +30,7 @@
     <!-- Custom stylesheet - for your changes-->
     <link rel="stylesheet" href="css/custom.css">
     <!-- Favicon-->
-    <link rel="shortcut icon" href="favicon.png">
+    <link rel="shortcut icon" href="img/logo_web.ico" type="image/x-icon"> 
     <!-- Tweaks for older IEs--><!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
@@ -40,7 +40,8 @@
     <header class="header">
       <div role="navigation" class="navbar navbar-default">
         <div class="container">
-          <div class="navbar-header"><a href="home.jsp" class="navbar-brand">LOST&<span style="color: #000000;">FOUND</span></a>
+          <div class="navbar-header"><img src="img/logo_web.png" style="float: left;padding-top: 10px;
+	padding-right: 10px;" class="logo"><a href="home.jsp" class="navbar-brand">LOST<span style="color: #000000;">STUFF</span></a>
             <div class="navbar-buttons">
               <button type="button" data-toggle="collapse" data-target=".navbar-collapse" class="navbar-toggle navbar-btn">Menu<i class="fa fa-align-justify"></i></button>
             </div>
@@ -188,6 +189,11 @@
                         }
                     %>
             </div>
+            <div class="row">
+                <div class="col-sm-12 text-right">
+                  <button type="button" class="btn btn-primary"><i class="fa fa-plus"></i> อ่านต่อ</button>
+                </div>
+            </div>
         </div>
 
 
@@ -217,6 +223,11 @@
             <% }
                         }
                     %>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 text-right">
+                <button type="button" class="btn btn-primary"><i class="fa fa-plus"></i> อ่านต่อ</button>
+            </div>
         </div>
         </div> 
         </div>

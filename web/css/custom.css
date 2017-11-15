@@ -28,3 +28,9 @@ a.list-group-item.active small {
 	padding-bottom: 5px;
 }
 span { font-weight: bold; }
+
+.logo {
+	padding-top: 10px;
+	padding-right: 10px;
+        float: left;
+}
