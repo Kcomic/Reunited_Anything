@@ -59,11 +59,8 @@ public class LoginServlet extends HttpServlet {
                 session.setAttribute("F_Name", first_name);
                 session.setAttribute("Phone", phone);
                 session.setAttribute("Facebook", facebook);
-out.println("<script type=\"text/javascript\">");
-   out.println("alert('Login Successful');");
-   out.println("location='home.jsp';");
-   out.println("</script>");
-                //response.sendRedirect("index.html");
+
+                response.sendRedirect("HomeServlet");
 
             } else {
 //                out.println("<head><meta charset=\"utf-8\"></head>");

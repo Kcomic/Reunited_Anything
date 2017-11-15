@@ -105,8 +105,8 @@
     <% }
                                         if (chk == 0) {
                                     %> 
-                                    <a href="#"><i class="fa fa-user"></i>น้องน้ำฝน</a>
-                                    <a href="#" data-toggle="modal" data-target="#login-modal" class="btn navbar-btn btn-ghost"><i class="fa fa-sign-out"></i>ออกจากระบบ</a>
+                                    <a href="#"><i class="fa fa-user"></i> <%=name%> </a>
+                                    <a href="LogoutServlet" class="btn navbar-btn btn-ghost"><i class="fa fa-sign-out"></i>ออกจากระบบ</a>
           </div>
         </div>
       </div>
@@ -167,8 +167,7 @@
             <div class="list-group">
                 <% List<Post> posts = (List<Post>) session.getAttribute("posts");
                         if (posts != null) {
-                            for (Post post : posts){   
-                                if(post.getStatus() == "lost")
+                            for (Post post : posts){
                         %>
                 <a href="#" class="list-group-item">
                     <div class="col-md-3">
@@ -195,6 +194,11 @@
        <div class="col-md-6">
        <h2 style="text-align:center;">ของที่มีคนพบ</h2>
         <div class="list-group">
+            <%
+                List<Post> found_posts = (List<Post>) session.getAttribute("found_posts");
+                        if (found_posts != null) {
+                            for (Post post : found_posts){   
+                        %>
             <a href="#" class="list-group-item">
                     <div class="col-md-3">
                         <figure class="pull-left">
@@ -202,59 +206,17 @@
                        </figure>
                     </div>
                     <div class="col-md-4">
-                        <h4 class="list-group-item-heading"> เจ้าบีเก้ิล </h4>
-                        <p class="list-group-item-text">วันที่หาย: 15/10/2014</p>
-                        <p class="list-group-item-text">เวลาที่หาย: 16.00 น.</p>
+                        <h4 class="list-group-item-heading"> <%=post.getName()%> </h4>
+                        <p class="list-group-item-text">วันที่หาย: <%=post.getDate()%></p>
+                        <p class="list-group-item-text">เวลาที่หาย: <%=post.getTime()%></p>
                     </div>
                     <div class="col-md-4">
-                        <p class="list-group-item-text" style="padding-top:20px;padding-left:5px;">เจ้าของ: น้องน้ำฝน</p>
+                        <p class="list-group-item-text" style="padding-top:20px;padding-left:5px;">เจ้าของ: <%=post.getFirst_name()%></p>
                     </div>
             </a>
-            <a href="#" class="list-group-item">
-                    <div class="col-md-3">
-                        <figure class="pull-left">
-                        <img class="media-object img-rounded img-responsive"  src="img/found1.jpg" alt="" >
-                       </figure>
-                    </div>
-                    <div class="col-md-4">
-                        <h4 class="list-group-item-heading"> เจ้าบีเกิ้ล </h4>
-                        <p class="list-group-item-text">วันที่หาย: 15/10/2014</p>
-                        <p class="list-group-item-text">เวลาที่หาย: 16.00 น.</p>
-                    </div>
-                    <div class="col-md-4">
-                        <p class="list-group-item-text" style="padding-top:20px;padding-left:5px;">เจ้าของ: น้องน้ำฝน</p>
-                    </div>
-            </a>
-            <a href="#" class="list-group-item">
-                    <div class="col-md-3">
-                        <figure class="pull-left">
-                        <img class="media-object img-rounded img-responsive"  src="img/found1.jpg" alt="" >
-                       </figure>
-                    </div>
-                    <div class="col-md-4">
-                        <h4 class="list-group-item-heading"> เจ้าบีเก้ิล </h4>
-                        <p class="list-group-item-text">วันที่หาย: 15/10/2014</p>
-                        <p class="list-group-item-text">เวลาที่หาย: 16.00 น.</p>
-                    </div>
-                    <div class="col-md-4">
-                        <p class="list-group-item-text" style="padding-top:20px;padding-left:5px;">เจ้าของ: น้องน้ำฝน</p>
-                    </div>
-            </a>
-            <a href="#" class="list-group-item">
-                    <div class="col-md-3">
-                        <figure class="pull-left">
-                        <img class="media-object img-rounded img-responsive"  src="img/found1.jpg" alt="" >
-                       </figure>
-                    </div>
-                    <div class="col-md-4">
-                        <h4 class="list-group-item-heading"> เจ้าบีเก้ิล </h4>
-                        <p class="list-group-item-text">วันที่หาย: 15/10/2014</p>
-                        <p class="list-group-item-text">เวลาที่หาย: 16.00 น.</p>
-                    </div>
-                    <div class="col-md-4">
-                        <p class="list-group-item-text" style="padding-top:20px;padding-left:5px;">เจ้าของ: น้องน้ำฝน</p>
-                    </div>
-            </a>
+            <% }
+                        }
+                    %>
         </div>
         </div> 
         </div>

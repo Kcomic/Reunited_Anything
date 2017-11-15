@@ -30,6 +30,8 @@ public class RegisterServlet extends HttpServlet {
     }
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
+        response.setCharacterEncoding("UTF-8");
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         try {
@@ -62,6 +64,8 @@ public class RegisterServlet extends HttpServlet {
             
             
             if (chk == 0 || password.equals(c_password)) {
+                System.out.println("");
+                System.out.println(first_name);
                 sql = "insert into member (Email, Password, F_Name, L_Name, Phone, Facebook) values (?, ?, ?, ?, ?, ?)";
                 stmt = conn.prepareStatement(sql);
                 stmt.setString(1, username);

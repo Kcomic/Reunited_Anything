@@ -45,8 +45,9 @@ private Connection conn;
         PrintWriter out = response.getWriter();
         try {
             HttpSession session = request.getSession();
-            String sql = "select idPost, Email, Date, Name, Pic_base64, Type, Place, Detail, Status, F_Name, Time from post join member using (Email)";
+            String sql = "select idPost, Email, Date, Name, Pic_base64, Type, Place, Detail, F_Name, Time from post join member using (Email) where Status = ? order by Date DESC, Time DESC limit 5";
             PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setString(1, "lost");
             ResultSet rs = stmt.executeQuery();
             ArrayList<Post> posts = new ArrayList();
             while(rs.next()){
@@ -59,9 +60,8 @@ private Connection conn;
                 String type = rs.getString(6);
                 String place = rs.getString(7);
                 String detail = rs.getString(8);
-                String status = rs.getString(9);
-                String first_name = rs.getString(10);
-                String time = rs.getString(11);
+                String first_name = rs.getString(9);
+                String time = rs.getString(10);
                 p.setDate(date);
                 p.setDetail(detail);
                 p.setEmail(email);
@@ -71,11 +71,42 @@ private Connection conn;
                 p.setPic_base64(pic_base64);
                 p.setType(type);
                 p.setPlace(place);
-                p.setStatus(status);
+                p.setStatus("lost");
                 p.setTime(time);
                 posts.add(p);
             }
+            sql = "select idPost, Email, Date, Name, Pic_base64, Type, Place, Detail, F_Name, Time from post join member using (Email) where Status = ? order by Date DESC, Time DESC limit 5";
+            stmt = conn.prepareStatement(sql);
+            stmt.setString(1, "found");
+            rs = stmt.executeQuery();
+            ArrayList<Post> found_posts = new ArrayList();
+            while(rs.next()){
+                Post p = new Post();
+                int idPost = rs.getInt(1);
+                String email = rs.getString(2);
+                String date = rs.getString(3);
+                String name = rs.getString(4);
+                String pic_base64 = rs.getString(5);
+                String type = rs.getString(6);
+                String place = rs.getString(7);
+                String detail = rs.getString(8);
+                String first_name = rs.getString(9);
+                String time = rs.getString(10);
+                p.setDate(date);
+                p.setDetail(detail);
+                p.setEmail(email);
+                p.setId(idPost);
+                p.setName(name);
+                p.setFirst_name(first_name);
+                p.setPic_base64(pic_base64);
+                p.setType(type);
+                p.setPlace(place);
+                p.setStatus("found");
+                p.setTime(time);
+                found_posts.add(p);
+            }
             session.setAttribute("posts", posts);
+            session.setAttribute("found_posts", found_posts);
             response.sendRedirect("home.jsp");
         } catch(Exception e){
         
