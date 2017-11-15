@@ -23,7 +23,7 @@ import model.Post;
  *
  * @author Kcomic
  */
-@WebServlet(name = "PostServlet", urlPatterns = {"/PostServlet"})
+@WebServlet(name = "HomeServlet", urlPatterns = {"/HomeServlet"})
 public class HomeServlet extends HttpServlet {
 private Connection conn;
 

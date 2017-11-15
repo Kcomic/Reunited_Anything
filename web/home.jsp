@@ -104,7 +104,6 @@
     <!-- *** LOGIN MODAL END ***-->
     <% }
                                         if (chk == 0) {
-                                        s
                                     %> 
                                     <a href="#"><i class="fa fa-user"></i>น้องน้ำฝน</a>
                                     <a href="#" data-toggle="modal" data-target="#login-modal" class="btn navbar-btn btn-ghost"><i class="fa fa-sign-out"></i>ออกจากระบบ</a>

@@ -26,7 +26,7 @@
         </session-timeout>
     </session-config>
     <welcome-file-list>
-        <welcome-file>home.jsp</welcome-file>
+        <welcome-file>welcome.jsp</welcome-file>
     </welcome-file-list>
     <resource-ref>
         <description>jdbc:mysql://localhost:3306/reunited_anything?zeroDateTimeBehavior=convertToNull</description>
