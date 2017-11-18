@@ -12,7 +12,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>LOST&FOUND KMITL</title>
+    <title>LOST STUFF KMITL</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="all,follow">
@@ -40,8 +40,7 @@
     <header class="header">
       <div role="navigation" class="navbar navbar-default">
         <div class="container">
-          <div class="navbar-header"><img src="img/logo_web.png" style="float: left;padding-top: 10px;
-	padding-right: 10px;" class="logo"><a href="home.jsp" class="navbar-brand">LOST<span style="color: #000000;">STUFF</span></a>
+          <div class="navbar-header"><img src="img/logo_web.png" class="logo"><a href="home.jsp" class="navbar-brand">LOST<span style="color: #000000;">STUFF</span></a>
             <div class="navbar-buttons">
               <button type="button" data-toggle="collapse" data-target=".navbar-collapse" class="navbar-toggle navbar-btn">Menu<i class="fa fa-align-justify"></i></button>
             </div>
@@ -49,16 +48,8 @@
           <div id="navigation" class="collapse navbar-collapse navbar-right">
             <ul class="nav navbar-nav">
               <li class="active"><a href="home.jsp">หน้าหลัก</a></li>
-              <li><a href=#>หน้าอะไรไม่รู้</a></li>
-              <!-- <li class="dropdown"><a href="#" data-toggle="dropdown" class="dropdown-toggle">Dropdown <b class="caret"></b></a>
-                <ul class="dropdown-menu">
-                  <li><a href="#">Dropdown item 1</a></li>
-                  <li><a href="#">Dropdown item 2</a></li>
-                  <li><a href="#">Dropdown item 3</a></li>
-                  <li><a href="#">Dropdown item 4</a></li>
-                </ul>
-              </li>
-              <li><a href="contact.html">Contact</a></li> -->
+              <li><a href=lost.jsp>รายการของที่ตามหา</a></li>
+              <li><a href=found.jsp>รายการของที่พบ</a></li>
             </ul>
               <%
 
@@ -143,11 +134,11 @@
     <div class="jumbotron main-jumbotron" style="margin-bottom: 0px;">
       <div class="container">
         <div class="content">
-          <h1>LOST & FOUND at KMITL</h1>
+          <h1>LOST STUFF at KMITL</h1>
           <p class="margin-bottom">เว็บไซต์ตามหาของหายและคืนของสำหรับนักศึกษาและบุคลากรของสถาบันเทคโนโลยีพระจอมเกล้าเจ้าคุณทหารลาดกระบัง</a></p>
           <div class="col-sm-12">
-          <a class="btn btn-white btn-dl-size">ตามหาของ</a>
-          <a class="btn btn-white btn-dl-size btn-margin">พบของ</a>
+          <a href="lost.jsp" class="btn btn-white btn-dl-size">ตามหาของ</a>
+          <a href="found.jsp" class="btn btn-white btn-dl-size btn-margin">พบของ</a>
           </div>
         </div>
       </div>
@@ -173,16 +164,18 @@
                 <a href="#" class="list-group-item">
                     <div class="col-md-3">
                         <figure class="pull-left">
-                        <img class="media-object img-rounded img-responsive"  src="img/lost1.jpg" alt="" >
+                        <img class="media-object img-rounded img-responsive img-resize"  src="img/lost1.jpg" alt="" >
                        </figure>
                     </div>
-                    <div class="col-md-4">
-                        <h4 class="list-group-item-heading"> <%=post.getName()%> </h4>
-                        <p class="list-group-item-text">วันที่หาย: <%=post.getDate()%></p>
-                        <p class="list-group-item-text">เวลาที่หาย: <%=post.getTime()%></p>
+                    <div class="col-md-9">
+                        <h4 class="list-group-item-heading wording"> <%=post.getName()%> </h4>
                     </div>
                     <div class="col-md-4">
-                        <p class="list-group-item-text" style="padding-top:20px;padding-left:5px;">เจ้าของ: <%=post.getFirst_name()%></p>
+                        <p class="list-group-item-text wording">วันที่หาย: <%=post.getDate()%></p>
+                        <p class="list-group-item-text wording">เวลาที่หาย: <%=post.getTime()%></p>
+                    </div>
+                    <div class="col-md-4">
+                        <p class="list-group-item-text wording">เจ้าของ: <%=post.getFirst_name()%></p>
                     </div>
                 </a>
                 <% }
@@ -208,16 +201,18 @@
             <a href="#" class="list-group-item">
                     <div class="col-md-3">
                         <figure class="pull-left">
-                        <img class="media-object img-rounded img-responsive"  src="img/found1.jpg" alt="" >
+                        <img class="media-object img-rounded img-responsive img-resize"  src="img/found1.jpg" alt="" >
                        </figure>
                     </div>
-                    <div class="col-md-4">
-                        <h4 class="list-group-item-heading"> <%=post.getName()%> </h4>
-                        <p class="list-group-item-text">วันที่หาย: <%=post.getDate()%></p>
-                        <p class="list-group-item-text">เวลาที่หาย: <%=post.getTime()%></p>
+                    <div class="col-md-9">
+                        <h4 class="list-group-item-heading wording"> <%=post.getName()%> </h4>
                     </div>
                     <div class="col-md-4">
-                        <p class="list-group-item-text" style="padding-top:20px;padding-left:5px;">เจ้าของ: <%=post.getFirst_name()%></p>
+                        <p class="list-group-item-text wording">วันที่หาย: <%=post.getDate()%></p>
+                        <p class="list-group-item-text wording">เวลาที่หาย: <%=post.getTime()%></p>
+                    </div>
+                    <div class="col-md-4">
+                        <p class="list-group-item-text wording">เจ้าของ: <%=post.getFirst_name()%></p>
                     </div>
             </a>
             <% }
