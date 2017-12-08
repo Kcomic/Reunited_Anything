@@ -24,8 +24,8 @@ public class RegisterServlet extends HttpServlet {
 
     private Connection conn;
 
+    @Override
     public void init() {
-
         conn = (Connection) getServletContext().getAttribute("connection");
     }
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)

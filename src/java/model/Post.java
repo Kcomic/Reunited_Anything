@@ -22,6 +22,20 @@ public class Post {
     private String status;
     private String time;
 
+    public Post(int id, String first_name, String email, String date, String name, String pic_base64, String type, String place, String detail, String status, String time) {
+        this.id = id;
+        this.first_name = first_name;
+        this.email = email;
+        this.date = date;
+        this.name = name;
+        this.pic_base64 = pic_base64;
+        this.type = type;
+        this.place = place;
+        this.detail = detail;
+        this.status = status;
+        this.time = time;
+    }
+
     public String getTime() {
         return time;
     }

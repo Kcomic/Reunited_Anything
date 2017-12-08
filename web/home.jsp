@@ -4,6 +4,7 @@
     Author     : Kcomic
 --%>
 
+<%@page import="model.Member"%>
 <%@page import="java.util.List"%>
 <%@page import="model.Post"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -51,16 +52,15 @@
               <li><a href=lost.jsp>รายการของที่ตามหา</a></li>
               <li><a href=found.jsp>รายการของที่พบ</a></li>
             </ul>
-              <%
-
-                                    String name = (String) session.getAttribute("F_Name");
-                                    int chk = 0;
-                                    if (name == null) {
-                                        chk = 1;
-                                    }
-
-                                    if (chk == 1) {
-                                %>
+            <%
+                Member member = Member.getInstance();
+                String FirstName = member.getFirstName();
+                int chk = 0;
+                if (FirstName == null) {
+                    chk = 1;
+                }
+                if (chk == 1) {
+            %>
             <a href="#" data-toggle="modal" data-target="#login-modal" class="btn navbar-btn btn-ghost"><i class="fa fa-sign-in"></i>เข้าสู่ระบบ</a>
           </div>
         </div>
@@ -97,7 +97,7 @@
     <% }
                                         if (chk == 0) {
                                     %> 
-                                    <a href="#"><i class="fa fa-user"></i> <%=name%> </a>
+                                    <a href="#"><i class="fa fa-user"></i> <%=FirstName%> </a>
                                     <a href="LogoutServlet" class="btn navbar-btn btn-ghost"><i class="fa fa-sign-out"></i>ออกจากระบบ</a>
           </div>
         </div>
@@ -164,7 +164,7 @@
                 <a href="#" class="list-group-item">
                     <div class="col-md-3">
                         <figure class="pull-left">
-                        <img class="media-object img-rounded img-responsive img-resize"  src="img/lost1.jpg" alt="" >
+                        <img class="media-object img-rounded img-responsive img-resize"  src="img/<%=post.getId()%>.jpg" alt="" >
                        </figure>
                     </div>
                     <div class="col-md-9">
@@ -201,7 +201,7 @@
             <a href="#" class="list-group-item">
                     <div class="col-md-3">
                         <figure class="pull-left">
-                        <img class="media-object img-rounded img-responsive img-resize"  src="img/found1.jpg" alt="" >
+                        <img class="media-object img-rounded img-responsive img-resize"  src="img/<%=post.getId()%>.jpg" alt="" >
                        </figure>
                     </div>
                     <div class="col-md-9">
@@ -246,6 +246,20 @@
       </div>
     </footer>
     <!-- Javascript files-->
+    
+<script src="https://www.gstatic.com/firebasejs/4.8.0/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyD_fFA9Ec-QDLW4qpGFpTlbL0PgCTlZiZc",
+    authDomain: "reunited-anything.firebaseapp.com",
+    databaseURL: "https://reunited-anything.firebaseio.com",
+    projectId: "reunited-anything",
+    storageBucket: "",
+    messagingSenderId: "243586778261"
+  };
+  firebase.initializeApp(config);
+</script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/jquery.cookie.js"> </script>

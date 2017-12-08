@@ -30,15 +30,7 @@ private Connection conn;
     public void init() {
         conn = (Connection) getServletContext().getAttribute("connection");
     }
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -51,7 +43,6 @@ private Connection conn;
             ResultSet rs = stmt.executeQuery();
             ArrayList<Post> posts = new ArrayList();
             while(rs.next()){
-                Post p = new Post();
                 int idPost = rs.getInt(1);
                 String email = rs.getString(2);
                 String date = rs.getString(3);
@@ -62,17 +53,7 @@ private Connection conn;
                 String detail = rs.getString(8);
                 String first_name = rs.getString(9);
                 String time = rs.getString(10);
-                p.setDate(date);
-                p.setDetail(detail);
-                p.setEmail(email);
-                p.setId(idPost);
-                p.setName(name);
-                p.setFirst_name(first_name);
-                p.setPic_base64(pic_base64);
-                p.setType(type);
-                p.setPlace(place);
-                p.setStatus("lost");
-                p.setTime(time);
+                Post p = new Post(idPost, first_name, email, date, name, pic_base64, type, place, detail, "lost", time);
                 posts.add(p);
             }
             sql = "select idPost, Email, Date, Name, Pic_base64, Type, Place, Detail, F_Name, Time from post join member using (Email) where Status = ? order by Date DESC, Time DESC limit 5";
@@ -81,7 +62,6 @@ private Connection conn;
             rs = stmt.executeQuery();
             ArrayList<Post> found_posts = new ArrayList();
             while(rs.next()){
-                Post p = new Post();
                 int idPost = rs.getInt(1);
                 String email = rs.getString(2);
                 String date = rs.getString(3);
@@ -92,17 +72,7 @@ private Connection conn;
                 String detail = rs.getString(8);
                 String first_name = rs.getString(9);
                 String time = rs.getString(10);
-                p.setDate(date);
-                p.setDetail(detail);
-                p.setEmail(email);
-                p.setId(idPost);
-                p.setName(name);
-                p.setFirst_name(first_name);
-                p.setPic_base64(pic_base64);
-                p.setType(type);
-                p.setPlace(place);
-                p.setStatus("found");
-                p.setTime(time);
+                Post p = new Post(idPost, first_name, email, date, name, pic_base64, type, place, detail, "found", time);
                 found_posts.add(p);
             }
             session.setAttribute("posts", posts);

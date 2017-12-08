@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import model.Member;
 
 /**
  *
@@ -36,6 +37,7 @@ public class LogoutServlet extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
              HttpSession session = request.getSession();
             session.invalidate();
+            Member.reset();
             response.sendRedirect("HomeServlet");
         }
     }

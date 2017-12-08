@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import model.Member;
 
 /**
  *
@@ -23,10 +24,12 @@ import javax.servlet.http.HttpSession;
 public class LoginServlet extends HttpServlet {
 
     private Connection conn;
+    private Member member;
 
+    @Override
     public void init() {
-
         conn = (Connection) getServletContext().getAttribute("connection");
+        member = Member.getInstance();
     }
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
@@ -39,36 +42,28 @@ public class LoginServlet extends HttpServlet {
             String username = request.getParameter("username");
             String password = request.getParameter("password");
             if(username == null || username.equals("")){
-                    username = (String) request.getAttribute("username");
-                    password = (String) request.getAttribute("password");
-                    }
+                username = (String) request.getAttribute("username");
+                password = (String) request.getAttribute("password");
+            }
             String sql = "select * from member where Email = ? and Password = ?";
             PreparedStatement stmt = conn.prepareStatement(sql);
             stmt.setString(1, username);
             stmt.setString(2, password);
             ResultSet rs = stmt.executeQuery();
             if (rs.next()) {
-                String first_name = rs.getString("F_Name");
-                String last_name = rs.getString("L_Name");
-                String phone = rs.getString("Phone");
-                String facebook = rs.getString("Facebook");
-                System.out.print("Hello " + first_name);
-                session.setAttribute("Email", username);
-                session.setAttribute("Password", password);
-                session.setAttribute("L_Name", last_name);
-                session.setAttribute("F_Name", first_name);
-                session.setAttribute("Phone", phone);
-                session.setAttribute("Facebook", facebook);
-
+                member.setFirstName(rs.getString("F_Name"));
+                member.setLastName(rs.getString("L_Name"));
+                member.setEmail(username);
+                member.setFacebook(rs.getString("Facebook"));
+                member.setPhone(rs.getString("Phone"));
                 response.sendRedirect("HomeServlet");
-
             } else {
 //                out.println("<head><meta charset=\"utf-8\"></head>");
 //            response.sendRedirect("register.html");
                 out.println("<script type=\"text/javascript\">");
-   out.println("alert('username or password incorrect');");
-   out.println("location='home.jsp';");
-   out.println("</script>");
+                out.println("alert('username or password incorrect');");
+                out.println("location='home.jsp';");
+                out.println("</script>");
 //            out.println("<h1>Login Fail!!!</h1>");
 //            out.println("Username or Password is incorrect Please try again");
             }
