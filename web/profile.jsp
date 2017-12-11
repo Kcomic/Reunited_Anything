@@ -4,6 +4,7 @@
     Author     : gracegapi
 --%>
 
+<%@page import="model.Member"%>
 <%@page import="java.util.List"%>
 <%@page import="model.Post"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -48,22 +49,88 @@
               <div id="navigation" class="collapse navbar-collapse navbar-right">
                 <ul class="nav navbar-nav">
                   <li class=""><a href="home.jsp">หน้าหลัก</a></li>
-                  <li><a href="text.html">หน้าอะไรไม่รู้</a></li>
-              <!-- <li class="dropdown"><a href="#" data-toggle="dropdown" class="dropdown-toggle">Dropdown <b class="caret"></b></a>
-                <ul class="dropdown-menu">
-                  <li><a href="#">Dropdown item 1</a></li>
-                  <li><a href="#">Dropdown item 2</a></li>
-                  <li><a href="#">Dropdown item 3</a></li>
-                  <li><a href="#">Dropdown item 4</a></li>
-                </ul>
-              </li>
-              <li><a href="contact.html">Contact</a></li> -->
-              <li class="active"><a href="#">โปรไฟล์</a></li>
+                  <li><a href=lost.jsp>รายการของที่ตามหา</a></li>
+              <li><a href=found.jsp>รายการของที่พบ</a></li>
             </ul>
+            <%
+                Member member = Member.getInstance();
+                String FirstName = member.getFirstName();
+                int chk = 0;
+                if (FirstName == null) {
+                    chk = 1;
+                }
+                if (chk == 1) {
+            %>
+            <a href="#" data-toggle="modal" data-target="#login-modal" class="btn navbar-btn btn-ghost"><i class="fa fa-sign-in"></i>เข้าสู่ระบบ</a>
           </div>
         </div>
       </div>
     </header>
+    <!-- *** LOGIN MODAL ***_________________________________________________________
+    -->
+    <div id="login-modal" tabindex="-1" role="dialog" aria-labelledby="Login" aria-hidden="true" class="modal fade">
+      <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" data-dismiss="modal" aria-hidden="true" class="close">×</button>
+            <h4 id="Login" class="modal-title">เข้าสู่ระบบ</h4>
+          </div>
+          <div class="modal-body">
+            <form action="Login.do" method="post">
+              <div class="form-group">
+                <input id="email_modal" type="text" placeholder="อีเมล" class="form-control" name="username">
+              </div>
+              <div class="form-group">
+                  <input id="password_modal" type="password" placeholder="รหัสผ่าน" class="form-control" name="password">
+              </div>
+              <p class="text-center">
+                <button type="submit" class="btn btn-primary"><i class="fa fa-sign-in"></i>เข้าสู่ระบบ</button>
+              </p>
+            </form>
+            <p class="text-center text-muted">ยังไม่ได้เป็นสมาชิก ?</p>
+            <p class="text-center text-muted"><a href="register.html"><strong>สมัครสมาชิก!</strong></a> เพื่อใช้งานเว็บไซต์</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- *** LOGIN MODAL END ***-->
+    <% }
+                                        if (chk == 0) {
+                                    %> 
+                                    <a href="#"><i class="fa fa-user"></i> <%=FirstName%> </a>
+                                    <a href="LogoutServlet" class="btn navbar-btn btn-ghost"><i class="fa fa-sign-out"></i>ออกจากระบบ</a>
+          </div>
+        </div>
+      </div>
+    </header>
+    <!-- *** LOGIN MODAL ***_________________________________________________________
+    -->
+    <div id="login-modal" tabindex="-1" role="dialog" aria-labelledby="Login" aria-hidden="true" class="modal fade">
+      <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" data-dismiss="modal" aria-hidden="true" class="close">×</button>
+            <h4 id="Login" class="modal-title">เข้าสู่ระบบ</h4>
+          </div>
+          <div class="modal-body">
+            <form action="Login.do" method="post">
+              <div class="form-group">
+                <input id="email_modal" type="text" placeholder="อีเมล" class="form-control" name="username">
+              </div>
+              <div class="form-group">
+                  <input id="password_modal" type="password" placeholder="รหัสผ่าน" class="form-control" name="password">
+              </div>
+              <p class="text-center">
+                <button type="submit" class="btn btn-primary"><i class="fa fa-sign-in"></i>เข้าสู่ระบบ</button>
+              </p>
+            </form>
+            <p class="text-center text-muted">ยังไม่ได้เป็นสมาชิก ?</p>
+            <p class="text-center text-muted"><a href="register.html"><strong>สมัครสมาชิก!</strong></a> เพื่อใช้งานเว็บไซต์</p>
+          </div>
+        </div>
+      </div>
+    </div>
+                                    <%}%>
 
     <section class="section--no-padding background-gray-lightest">
       <div class="container">
@@ -85,8 +152,12 @@
       <div class="col-md-4 col-xs-4">
         <div class="profile-block">
           <div class="panel text-center">
+            <% if(member.getUploaded() == 0){%>
             <div class="user-heading"><img style="border-radius: 100%;" src="http://cumbrianrun.co.uk/wp-content/uploads/2014/02/default-placeholder-300x300.png" width="250" height="250"><br><br>
-              <h2>ปิยาภา โอภาสพันธ์</h2>
+                <% } else{ System.out.println("img/"+member.getEmail()+".jpg");%>
+            <div class="user-heading"><img style="border-radius: 100%;" src="img/<%=member.getEmail()%>.jpg" width="250" height="250"><br><br>
+            <% } %>
+                <h2>ปิยาภา โอภาสพันธ์</h2>
               <p><span class="fa fa-envelope" style="width:50px"></span>gracegapi@gmail.com</p>
               <p><span class="fa fa-phone" style="width:50px" align = "center"></span>087-972-5608</p>
             </div>

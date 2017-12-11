@@ -11,6 +11,7 @@ package model;
  */
 public class Member {
     private String email, firstName, lastName, phone, facebook, password;
+    private int uploaded;
     private static Member memberInstance;
     
     public static Member getInstance(){
@@ -68,6 +69,14 @@ public class Member {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public int getUploaded() {
+        return uploaded;
+    }
+
+    public void setUploaded(int uploaded) {
+        this.uploaded = uploaded;
     }
     
     public static void reset(){

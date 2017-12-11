@@ -56,16 +56,11 @@ public class RegisterServlet extends HttpServlet {
             if (rs.next()) {
                 if (rs.getString("Email").equals(username)) {
                     chk = 1;
-                } else {
-                    chk = 2;
                 }
             }
-            
-            
-            
-            if (chk == 0 || password.equals(c_password)) {
-                System.out.println("");
-                System.out.println(first_name);
+
+            /* TODO output your page here. You may use following sample code. */
+            if (chk == 0 && chk_info == 0 && password.equals(c_password)) {
                 sql = "insert into member (Email, Password, F_Name, L_Name, Phone, Facebook) values (?, ?, ?, ?, ?, ?)";
                 stmt = conn.prepareStatement(sql);
                 stmt.setString(1, username);
@@ -75,25 +70,16 @@ public class RegisterServlet extends HttpServlet {
                 stmt.setString(5, phone);
                 stmt.setString(6, "fb.me/Kcomic");
                 stmt.executeUpdate();
-            }
-
-            /* TODO output your page here. You may use following sample code. */
-            if (chk == 0 && chk_info == 0 && password.equals(c_password)) {
                 RequestDispatcher rd = request.getRequestDispatcher("Login.do");
                 request.setAttribute("username", username);
                 request.setAttribute("password", password);
                 rd.forward(request, response);
             } else if (chk == 1 && chk_info == 0) {
                 out.println("<script type=\"text/javascript\">");
-                out.println("alert('Username already exists');");
-                out.println("location='register.html';");
-                out.println("</script>");
-            } else if (chk == 2 && chk_info == 0) {
-                out.println("<script type=\"text/javascript\">");
                 out.println("alert('Email already exists');");
                 out.println("location='register.html';");
                 out.println("</script>");
-            } else if (!(password.equals(c_password))){
+            }else if (!(password.equals(c_password))){
                 out.println("<script type=\"text/javascript\">");
                 out.println("alert('Password and Confirm Password are not match');");
                 out.println("location='register.html';");
