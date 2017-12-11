@@ -48,9 +48,9 @@
           </div>
           <div id="navigation" class="collapse navbar-collapse navbar-right">
             <ul class="nav navbar-nav">
-              <li><a href="home.jsp">หน้าหลัก</a></li>
-              <li><a href=lost.jsp>รายการของที่ตามหา</a></li>
-              <li class="active"><a href=found.jsp>รายการของที่พบ</a></li>
+              <li><a href="HomeServlet">หน้าหลัก</a></li>
+              <li><a href=LostServlet>รายการของที่ตามหา</a></li>
+              <li  class="active"><a href=FoundServlet>รายการของที่พบ</a></li>
             </ul>
             <%
                 Member member = Member.getInstance();
