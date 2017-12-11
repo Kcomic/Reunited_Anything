@@ -44,7 +44,7 @@ private Connection conn;
         response.setContentType("text/html;charset=UTF-8");
        try {
             HttpSession session = request.getSession();
-            String sql = "select idPost, Email, Date, Name, Pic_base64, Type, Place, Detail, F_Name, Time from post join member using (Email) where Status = ? order by Date DESC, Time DESC";
+            String sql = "select idPost, Email, Date, Name, Pic_base64, Type, Place, Detail, F_Name, Time, Validate from post join member using (Email) where Status = ? order by Date DESC, Time DESC";
             PreparedStatement stmt = conn.prepareStatement(sql);
             stmt.setString(1, "lost");
             ResultSet rs = stmt.executeQuery();
@@ -60,7 +60,8 @@ private Connection conn;
                 String detail = rs.getString(8);
                 String first_name = rs.getString(9);
                 String time = rs.getString(10);
-                Post p = new Post(idPost, first_name, email, date, name, pic_base64, type, place, detail, "lost", time);
+                String validate = rs.getString(11);
+                Post p = new Post(idPost, first_name, email, date, name, pic_base64, type, place, detail, "lost", time, validate);
                 LostPosts.add(p);
             }
             session.setAttribute("LostPosts", LostPosts);

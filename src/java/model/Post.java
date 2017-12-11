@@ -21,7 +21,8 @@ public class Post {
     private String detail;
     private String status;
     private String time;
-
+    private String validate;
+    
     public Post(int id, String first_name, String email, String date, String name, String pic_base64, String type, String place, String detail, String status, String time) {
         this.id = id;
         this.first_name = first_name;
@@ -34,8 +35,33 @@ public class Post {
         this.detail = detail;
         this.status = status;
         this.time = time;
+    
     }
 
+    public Post(int id, String first_name, String email, String date, String name, String pic_base64, String type, String place, String detail, String status, String time, String validate) {
+        this.id = id;
+        this.first_name = first_name;
+        this.email = email;
+        this.date = date;
+        this.name = name;
+        this.pic_base64 = pic_base64;
+        this.type = type;
+        this.place = place;
+        this.detail = detail;
+        this.status = status;
+        this.time = time;
+        this.validate = validate;
+    }
+
+    public String getValidate() {
+        return validate;
+    }
+
+    public void setValidate(String validate) {
+        this.validate = validate;
+    }
+
+    
     public String getTime() {
         return time;
     }

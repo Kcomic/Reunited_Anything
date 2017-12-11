@@ -199,7 +199,7 @@
                         <p class="list-group-item-text wording"><%= post.getTime() %> น.</p>
                     </div>
                     <div class="col-md-1" style="padding-left: 0px;width: 150px;">
-                        <p class="list-group-item-text wording" style="color:#FF0000;"><%= post.getStatus() %></p>
+                        <p class="list-group-item-text wording" style="color:#FF0000;"><%= post.getValidate() %></p>
                     </div>
                 </a>
                  <% }
