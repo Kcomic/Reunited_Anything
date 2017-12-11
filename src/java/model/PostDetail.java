@@ -7,11 +7,13 @@ package model;
 
 /**
  *
- * @author Kcomic
+ * @author Kawin
  */
-public class Post {
+public class PostDetail {
+
     private int id;
-    private String first_name;
+    private String firstName;
+    private String lastName;
     private String email;
     private String date;
     private String name;
@@ -22,25 +24,12 @@ public class Post {
     private String status;
     private String time;
     private String validate;
-    
-    public Post(int id, String first_name, String email, String date, String name, String pic_base64, String type, String place, String detail, String status, String time) {
-        this.id = id;
-        this.first_name = first_name;
-        this.email = email;
-        this.date = date;
-        this.name = name;
-        this.pic_base64 = pic_base64;
-        this.type = type;
-        this.place = place;
-        this.detail = detail;
-        this.status = status;
-        this.time = time;
-    
-    }
+    private String phone;
 
-    public Post(int id, String first_name, String email, String date, String name, String pic_base64, String type, String place, String detail, String status, String time, String validate) {
+    public PostDetail(int id, String firstName, String lastName, String email, String date, String name, String pic_base64, String type, String place, String detail, String status, String time, String validate, String phone) {
         this.id = id;
-        this.first_name = first_name;
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.email = email;
         this.date = date;
         this.name = name;
@@ -51,33 +40,7 @@ public class Post {
         this.status = status;
         this.time = time;
         this.validate = validate;
-    }
-
-    
-
-    public String getValidate() {
-        return validate;
-    }
-
-    public void setValidate(String validate) {
-        this.validate = validate;
-    }
-
-    
-    public String getTime() {
-        return time;
-    }
-
-    public void setTime(String time) {
-        this.time = time;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
+        this.phone = phone;
     }
 
     public int getId() {
@@ -86,6 +49,22 @@ public class Post {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public String getEmail() {
@@ -144,12 +123,36 @@ public class Post {
         this.detail = detail;
     }
 
-    public String getFirst_name() {
-        return first_name;
+    public String getStatus() {
+        return status;
     }
 
-    public void setFirst_name(String first_name) {
-        this.first_name = first_name;
+    public void setStatus(String status) {
+        this.status = status;
     }
-    
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
+    }
+
+    public String getValidate() {
+        return validate;
+    }
+
+    public void setValidate(String validate) {
+        this.validate = validate;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
 }
