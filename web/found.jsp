@@ -155,7 +155,7 @@
                 <p class="list-group-item-text"><b>ประเภท</b></p>
               </div>
               <div class="col-md-3" style="padding-left: 30px;">
-                <p class="list-group-item-text" style="padding-right: 15px;"><b>หัวข้อ</b></p>
+                <p class="list-group-item-text" style="padding-right: 15px;"><b>สถาที่หาย</b></p>
               </div>
               <div class="col-md-3" style="padding-left: 15px;width: 267px;">
                 <p class="list-group-item-text" style="padding-left: 5px;"><b>ผู้ตามหา</b></p>
@@ -173,106 +173,38 @@
             </div>
           <div class="col-lg-12">
             <div class="list-group">
+                 <% List<Post> posts = (List<Post>) session.getAttribute("foundPosts");
+                        if (posts != null) {
+                            for (Post post : posts){
+                        %>
                 <a href="#" class="list-group-item">
                     <div class="col-md-2" style="width: 100px;padding-left: 0px;">
-                        <figure class="pull-left">
-                        <img class="media-object img-rounded img-responsive img-resize" src="img/lost1.jpg" alt="" >
+                         <figure class="pull-left">
+                        <img class="media-object img-rounded img-responsive img-resize"  src="img/<%=post.getId()%>.jpg" alt="" >
                        </figure>
                     </div>
                     <div class="col-md-1" style="padding-left: 0px;" >
-                        <p class="list-group-item-text wording">ตุ๊กตา</p>
+                        <p class="list-group-item-text wording"> <%= post.getType() %> </p>
                     </div>
                     <div class="col-md-3">
-                        <p class="list-group-item-text wording">ตามหานุ้งหมีไรอันแสนน่ารักค่ะ ฮือ ไม่มีรางวัล มีแต่ใจให้ไปไม่คิดอะไร แง</p>
+                        <p class="list-group-item-text wording"><%= post.getPlace() %></p>
                     </div>
                     <div class="col-md-3">
-                        <p class="list-group-item-text wording">น้ำฝนคนเดิมเพิ่มเติมคือน่ารักมากๆ</p>
+                        <p class="list-group-item-text wording"><%= post.getName() %></p>
                     </div>
                     <div class="col-md-1" style="padding-left: 0px;">
-                        <p class="list-group-item-text wording">15/10/2014</p>
+                        <p class="list-group-item-text wording"><%= post.getDate() %></p>
                     </div>
                     <div class="col-md-1" style="padding-left: 0px;">
-                        <p class="list-group-item-text wording">16.00 น.</p>
+                        <p class="list-group-item-text wording"><%= post.getTime() %> น.</p>
                     </div>
                     <div class="col-md-1" style="padding-left: 0px;width: 150px;">
-                        <p class="list-group-item-text wording" style="color:#FF0000;">ยังไม่เจอเจ้าของ</p>
+                        <p class="list-group-item-text wording" style="color:#FF0000;"><%= post.getStatus() %></p>
                     </div>
                 </a>
-                <a href="#" class="list-group-item">
-                    <div class="col-md-2" style="width: 100px;padding-left: 0px;">
-                        <figure class="pull-left">
-                        <img class="media-object img-rounded img-responsive img-resize" src="img/lost2.jpg" alt="" >
-                       </figure>
-                    </div>
-                    <div class="col-md-1" style="padding-left: 0px;" >
-                        <p class="list-group-item-text wording">โทรศัพท์</p>
-                    </div>
-                    <div class="col-md-3">
-                        <p class="list-group-item-text wording">ไอโฟนของหน่องเอง</p>
-                    </div>
-                    <div class="col-md-3">
-                        <p class="list-group-item-text wording">น้ำฝนคนเดิมเพิ่มเติมคือน่ารักมากๆอีกแล้วจย้า</p>
-                    </div>
-                    <div class="col-md-1" style="padding-left: 0px;">
-                        <p class="list-group-item-text wording">15/10/2014</p>
-                    </div>
-                    <div class="col-md-1" style="padding-left: 0px;">
-                        <p class="list-group-item-text wording">16.00 น.</p>
-                    </div>
-                    <div class="col-md-1" style="padding-left: 0px;width: 150px;">
-                        <p class="list-group-item-text wording" style="color:#FF0000;">ยังไม่เจอเจ้าของ</p>
-                    </div>
-                </a>
-                <a href="#" class="list-group-item">
-                    <div class="col-md-2" style="width: 100px;padding-left: 0px;">
-                        <figure class="pull-left">
-                        <img class="media-object img-rounded img-responsive img-resize" src="img/lost1.jpg" alt="" >
-                       </figure>
-                    </div>
-                    <div class="col-md-1" style="padding-left: 0px;" >
-                        <p class="list-group-item-text wording">ตุ๊กตา</p>
-                    </div>
-                    <div class="col-md-3">
-                        <p class="list-group-item-text wording">ตามหานุ้งหมีไรอันแสนน่ารักค่ะ ฮือ ไม่มีรางวัล มีแต่ใจให้ไปไม่คิดอะไร แง</p>
-                    </div>
-                    <div class="col-md-3">
-                        <p class="list-group-item-text wording">น้ำฝนคนเดิมเพิ่มเติมคือน่ารักมากๆ</p>
-                    </div>
-                    <div class="col-md-1" style="padding-left: 0px;">
-                        <p class="list-group-item-text wording">15/10/2014</p>
-                    </div>
-                    <div class="col-md-1" style="padding-left: 0px;">
-                        <p class="list-group-item-text wording">16.00 น.</p>
-                    </div>
-                    <div class="col-md-1" style="padding-left: 0px;width: 150px;">
-                        <p class="list-group-item-text wording" style="color:#FF0000;">ยังไม่เจอเจ้าของ</p>
-                    </div>
-                </a>
-                <a href="#" class="list-group-item">
-                    <div class="col-md-2" style="width: 100px;padding-left: 0px;">
-                        <figure class="pull-left">
-                        <img class="media-object img-rounded img-responsive img-resize" src="img/lost2.jpg" alt="" >
-                       </figure>
-                    </div>
-                    <div class="col-md-1" style="padding-left: 0px;" >
-                        <p class="list-group-item-text wording">โทรศัพท์</p>
-                    </div>
-                    <div class="col-md-3">
-                        <p class="list-group-item-text wording">ไอโฟนของหน่องเอง</p>
-                    </div>
-                    <div class="col-md-3">
-                        <p class="list-group-item-text wording">น้ำฝนคนเดิมเพิ่มเติมคือน่ารักมากๆอีกแล้วจย้า</p>
-                    </div>
-                    <div class="col-md-1" style="padding-left: 0px;">
-                        <p class="list-group-item-text wording">15/10/2014</p>
-                    </div>
-                    <div class="col-md-1" style="padding-left: 0px;">
-                        <p class="list-group-item-text wording">16.00 น.</p>
-                    </div>
-                    <div class="col-md-1" style="padding-left: 0px;width: 150px;">
-                        <p class="list-group-item-text wording" style="color:#FF0000;">ยังไม่เจอเจ้าของ</p>
-                    </div>
-                </a>
+                 <% }
+                        }
+                    %>
             </div>
 
           </div>
