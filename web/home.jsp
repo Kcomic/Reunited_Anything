@@ -49,6 +49,7 @@
           <div id="navigation" class="collapse navbar-collapse navbar-right">
             <ul class="nav navbar-nav">
               <li class="active"><a href="HomeServlet">หน้าหลัก</a></li>
+              <li><a href=>ค้นหา</a></li>
               <li><a href=LostServlet>รายการของที่ตามหา</a></li>
               <li><a href=FoundServlet>รายการของที่พบ</a></li>
             </ul>

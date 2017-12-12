@@ -49,6 +49,7 @@
           <div id="navigation" class="collapse navbar-collapse navbar-right">
             <ul class="nav navbar-nav">
               <li><a href="HomeServlet">หน้าหลัก</a></li>
+              <li><a href=>ค้นหา</a></li>
               <li class="active"><a href=LostServlet>รายการของที่ตามหา</a></li>
               <li><a href=FoundServlet>รายการของที่พบ</a></li>
             </ul>
@@ -139,7 +140,14 @@
             <li>รายการของหาย</li>
           </ul>
         </div>
-        <h1 class="heading">รายการของหาย</h1>
+        <div class="row">
+            <div class="col-xs-3">
+                <h1 class="heading">รายการของหาย</h1>
+            </div>
+            <div class="col-xs-2" style="margin-top: 5px;">
+              <button type="button" class="btn btn-primary"><i class="fa fa-plus"></i> แจ้งของหาย</button>
+            </div>
+        </div>
         <!-- <p class="lead">This is the lead paragraph of the article. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget.</p> -->
       </div>
     </section>
@@ -210,6 +218,32 @@
           </div>
         </div>
       </div>
+      <div class="row text-center">
+   
+                <ul class="pagination">
+                    <li>
+                        <a href="#">&laquo;</a>
+                    </li>
+                    <li class="active">
+                        <a href="#">1</a>
+                    </li>
+                    <li>
+                        <a href="#">2</a>
+                    </li>
+                    <li>
+                        <a href="#">3</a>
+                    </li>
+                    <li>
+                        <a href="#">4</a>
+                    </li>
+                    <li>
+                        <a href="#">5</a>
+                    </li>
+                    <li>
+                        <a href="#">&raquo;</a>
+                    </li>
+                </ul>
+            </div>
     </section>
     
     <footer class="footer">

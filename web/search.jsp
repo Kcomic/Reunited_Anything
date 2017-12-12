@@ -1,3 +1,13 @@
+<%-- 
+    Document   : search
+    Created on : Dec 12, 2017, 6:16:00 PM
+    Author     : User
+--%>
+
+<%@page import="model.Member"%>
+<%@page import="java.util.List"%>
+<%@page import="model.Post"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
   <head>
@@ -31,27 +41,18 @@
     <header class="header">
       <div role="navigation" class="navbar navbar-default">
         <div class="container">
-          <div class="navbar-header"><img src="img/logo_web.png" class="logo"><a href="home.jsp" class="navbar-brand">LOST<span style="color: #000000;">STUFF</span></a>
+          <div class="navbar-header"><a href="index.html" class="navbar-brand">LOST<span style="color: #000000;">STUFF</span></a>
             <div class="navbar-buttons">
               <button type="button" data-toggle="collapse" data-target=".navbar-collapse" class="navbar-toggle navbar-btn">Menu<i class="fa fa-align-justify"></i></button>
             </div>
           </div>
           <div id="navigation" class="collapse navbar-collapse navbar-right">
             <ul class="nav navbar-nav">
-              <li><a href="home.jsp">หน้าหลัก</a></li>
-              <li><a href=>ค้นหา</a></li>
-              <li><a href="lost.jsp">รายการของที่ตามหา</a></li>
-              <li><a href="found.jsp">รายการของที่พบ</a></li>
-              <!-- <li class="dropdown"><a href="#" data-toggle="dropdown" class="dropdown-toggle">Dropdown <b class="caret"></b></a>
-                <ul class="dropdown-menu">
-                  <li><a href="#">Dropdown item 1</a></li>
-                  <li><a href="#">Dropdown item 2</a></li>
-                  <li><a href="#">Dropdown item 3</a></li>
-                  <li><a href="#">Dropdown item 4</a></li>
-                </ul>
-              </li>
-              <li><a href="contact.html">Contact</a></li> -->
-              <li class="active"><a href="register.html">สมัครสมาชิก</a></li>
+              <li><a href="HomeServlet">หน้าหลัก</a></li>
+              <li class="active"><a href=>ค้นหา</a></li>
+              <li><a href=LostServlet>รายการของที่ตามหา</a></li>
+              <li><a href=FoundServlet>รายการของที่พบ</a></li>
+              <li><a href="register.html">สมัครสมาชิก</a></li>
             </ul>
           </div>
         </div>
@@ -63,10 +64,10 @@
         <div class="breadcrumbs">
           <ul class="breadcrumb">
             <li><a href="home.jsp">หน้าแรก</a></li>
-            <li><a href="register.html">สมัครสมาชิก</a></li>
+            <li><a href="register.html">ค้นหา</a></li>
           </ul>
         </div>
-        <h1 class="heading">สมัครสมาชิก</h1>
+        <h1 class="heading">ค้นหา</h1>
         <!-- <p class="lead">This is the lead paragraph of the article. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget.</p> -->
       </div>
     </section>
