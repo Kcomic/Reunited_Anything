@@ -41,7 +41,7 @@
     <header class="header">
       <div role="navigation" class="navbar navbar-default">
         <div class="container">
-          <div class="navbar-header"><a href="index.html" class="navbar-brand">LOST<span style="color: #000000;">STUFF</span></a>
+          <div class="navbar-header"><img src="img/logo_web.png" class="logo"><a href="home.jsp" class="navbar-brand">LOST<span style="color: #000000;">STUFF</span></a>
             <div class="navbar-buttons">
               <button type="button" data-toggle="collapse" data-target=".navbar-collapse" class="navbar-toggle navbar-btn">Menu<i class="fa fa-align-justify"></i></button>
             </div>
@@ -74,9 +74,9 @@
         </div>
       </div>
     </section>
-    <section class="section--little-padding blog-post" style="margin-left: 370px;">
-      <div class="container">
-        <div class="row">
+    <section class="section--little-padding blog-post" style="margin-left:400px;">
+        <div class="row" style="margin-right: 0px;">
+        <div class="row" style="margin-right: 0px;">
           <div class="col-sm-12">
             <div class="post-content">
               <form>
@@ -99,7 +99,7 @@
             <div class="form-group row">
               <label for="inputStatus" style="float:left;">ประเภท</label>
                       <div class="col-sm-2">
-                        <select class="selectpicker" data-live-search="true" style="float:left; width: 150px;">
+                        <select class="selectpicker" data-live-search="true" style="float:left; width: 150px; height: 31px;">
                             <option data-tokens="ketchup mustard">ทั้งหมด </option>
                             <option data-tokens="mustard">คน</option>
                             <option data-tokens="frosting">สัตว์</option>
@@ -145,14 +145,14 @@
     </section>
     
     <footer class="footer">
-      <div class="footer__copyright">
+      <div class="footer__copyright" style="position: absolute;left: 0;bottom: 0;width: 100%;">
         <div class="container">
           <div class="row">
             <div class="col-md-6">
-              <p>&copy;2016 Best company</p>
+              <p>LOST STUFF</p>
             </div>
             <div class="col-md-6">
-              <p class="credit">Code <a href="https://bootstrapious.com/e-commerce-templates" class="external">Bootstrapious</a></p>
+              <p class="credit">SE PROJECT</a></p>
               <!-- Please do not remove the backlink to us unless you support us at https://bootstrapious.com/donate. It is part of the license conditions. Thank you for understanding :)-->
             </div>
           </div>
