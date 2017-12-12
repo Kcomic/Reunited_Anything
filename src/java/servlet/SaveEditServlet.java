@@ -8,11 +8,15 @@ package servlet;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import model.Member;
 
 /**
  *
@@ -45,22 +49,33 @@ public class SaveEditServlet extends HttpServlet {
             String dateTime = String.valueOf(request.getParameter("dateTime"));
             String detail = String.valueOf(request.getParameter("detail"));
             String validate = String.valueOf(request.getParameter("validate"));
+            String postId = String.valueOf(request.getParameter("post_id"));
+            HttpSession session = request.getSession();
+            Member member = (Member)session.getAttribute("member");
+            
+            
+            String sql = "UPDATE post SET place = ?, type= ?, detail = ?, validate = ? WHERE id = ?";
+            String sql1 = "UPDATE `reunited_anything`.`post` SET `Type`= ?, `Place`= ?, `Detail`= ?, `Validate`=? WHERE `idPost`= ?";
 
-            out.println("place :"+place);
-            out.println("type :"+type);
-            out.println("dateTime :"+dateTime);
-            out.println("detail :"+detail);
-            out.println("validate :"+validate);
+           
+            PreparedStatement stmt = conn.prepareStatement(sql1);
+            stmt.setString(1, type);
+            stmt.setString(2, place);
+           
+            stmt.setString(3, detail);
+            stmt.setString(4, validate);
+            stmt.setString(5, postId);
+            stmt.executeUpdate();
 
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet SaveEditServlet</title>");
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet SaveEditServlet at " + place + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+            out.println("postId :" + postId);
+            out.println("place :" + place);
+            out.println("type :" + type);
+            out.println("dateTime :" + dateTime);
+            out.println("detail :" + detail);
+            out.println("validate :" + validate);
+            response.sendRedirect("PostDetailServlet?post_id="+postId+"&email="+member.getEmail());
+        } catch (Exception e) {
+
         }
     }
 
