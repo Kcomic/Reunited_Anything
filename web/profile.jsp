@@ -32,6 +32,7 @@
   <link rel="stylesheet" href="css/custom.css">
   <!-- Favicon-->
   <link rel="shortcut icon" href="favicon.png">
+  <link rel="shortcut icon" href="img/logo_web.ico" type="image/x-icon">
     <!-- Tweaks for older IEs--><!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
@@ -41,7 +42,7 @@
         <header class="header">
           <div role="navigation" class="navbar navbar-default">
             <div class="container">
-              <div class="navbar-header"><a href="home.jsp" class="navbar-brand">LOST&<span style="color: #000000;">FOUND</span></a>
+              <div class="navbar-header"><img src="img/logo_web.png" class="logo"><a href="home.jsp" class="navbar-brand">LOST&<span style="color: #000000;">FOUND</span></a>
                 <div class="navbar-buttons">
                   <button type="button" data-toggle="collapse" data-target=".navbar-collapse" class="navbar-toggle navbar-btn">Menu<i class="fa fa-align-justify"></i></button>
                 </div>
@@ -61,7 +62,7 @@
                 }
                 if (chk == 1) {
             %>
-            <a href="#" data-toggle="modal" data-target="#login-modal" class="btn navbar-btn btn-ghost"><i class="fa fa-sign-in"></i>เข้าสู่ระบบ</a>
+            <a href="#" data-toggle="modal" data-target="#login-modal" class="btn navbar-btn btn-ghost"><i class="fa fa-sign-in"></i>ออกจากระบบ</a>
           </div>
         </div>
       </div>
@@ -162,8 +163,7 @@
               <p><span class="fa fa-phone" style="width:50px" align = "center"></span><%=member.getPhone()%></p>
             </div>
             <ul class="nav nav-pills nav-stacked">  
-              <li class="active"><a href="#"><i class="fa fa-pencil-square-o"></i>Edit profile</a></li> 
-              <li><a href="#"><i class="fa fa-sign-out"></i>Logout</a></li>
+                <button type="button" class="btn btn-primary" style="width: 200px;"><i class="fa fa-pencil-square-o"></i>Edit profile</button>
             </ul>
           </div>
         </div>           

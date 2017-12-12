@@ -19,6 +19,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="all,follow">
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/3.1.3/css/bootstrap-datetimepicker.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
         <!-- Bootstrap CSS-->
         <link rel="stylesheet" href="css/bootstrap.min.css">
         <!-- Font Awesome and Pixeden Icon Stroke icon fonts-->
@@ -34,9 +37,8 @@
         <link rel="stylesheet" href="css/custom.css">
         <!-- Favicon-->
         <link rel="shortcut icon" href="favicon.png">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/3.1.3/css/bootstrap-datetimepicker.min.css">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+        <link rel="shortcut icon" href="img/logo_web.ico" type="image/x-icon">
+
 
         <!-- Tweaks for older IEs--><!--[if lt IE 9]>
             <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
@@ -48,25 +50,17 @@
         <header class="header">
             <div role="navigation" class="navbar navbar-default">
                 <div class="container">
-                    <div class="navbar-header"><a href="home.jsp" class="navbar-brand">LOST&<span style="color: #000000;">FOUND</span></a>
+                    <div class="navbar-header"><img src="img/logo_web.png" class="logo"><a href="home.jsp" class="navbar-brand">LOST&<span style="color: #000000;">FOUND</span></a>
                         <div class="navbar-buttons">
                             <button type="button" data-toggle="collapse" data-target=".navbar-collapse" class="navbar-toggle navbar-btn">Menu<i class="fa fa-align-justify"></i></button>
                         </div>
                     </div>
                     <div id="navigation" class="collapse navbar-collapse navbar-right">
                         <ul class="nav navbar-nav">
-                            <li class=""><a href="home.jsp">หน้าหลัก</a></li>
-                            <li><a href="text.html">หน้าอะไรไม่รู้</a></li>
-                            <!-- <li class="dropdown"><a href="#" data-toggle="dropdown" class="dropdown-toggle">Dropdown <b class="caret"></b></a>
-                              <ul class="dropdown-menu">
-                                <li><a href="#">Dropdown item 1</a></li>
-                                <li><a href="#">Dropdown item 2</a></li>
-                                <li><a href="#">Dropdown item 3</a></li>
-                                <li><a href="#">Dropdown item 4</a></li>
-                              </ul>
-                            </li>
-                            <li><a href="contact.html">Contact</a></li> -->
-                            <li class="active"><a href="register.html">สมัครสมาชิก</a></li>
+                            <li class="active"><a href="HomeServlet">หน้าหลัก</a></li>
+                            <li><a href=>ค้นหา</a></li>
+                            <li><a href=LostServlet>รายการของที่ตามหา</a></li>
+                            <li><a href=FoundServlet>รายการของที่พบ</a></li>
                         </ul>
                     </div>
                 </div>
@@ -78,19 +72,19 @@
                 <div class="breadcrumbs">
                     <ul class="breadcrumb">
                         <li><a href="found.jsp">รายการของหาย</a></li>
-                        <% if(session.getAttribute("post").equals("found")){ %>
-                            <li><a href="foundPost.jsp">พบเจอสิ่งของ</a></li>
-                        <% } else{ %>
-                            <li><a href="foundPost.jsp">ตามหาสิ่งของ</a></li>
-                        <% }%>
+                            <% if (session.getAttribute("post").equals("found")) { %>
+                        <li>พบเจอสิ่งของ</a></li>
+                            <% } else { %>
+                        <li>ตามหาสิ่งของ</a></li>
+                            <% }%>
                     </ul>
                 </div>
-                <% if(session.getAttribute("post").equals("found")){ %>
-                    <h1 class="heading">แจ้งพบเจอสิ่งของ</h1>
-                <% } else{ %>
-                    <h1 class="heading">แจ้งตามหาสิ่งของ</h1>
+                <% if (session.getAttribute("post").equals("found")) { %>
+                <h1 class="heading">แจ้งพบเจอสิ่งของ</h1>
+                <% } else { %>
+                <h1 class="heading">แจ้งตามหาสิ่งของ</h1>
                 <% }%>
-                
+
                 <!-- <p class="lead">This is the lead paragraph of the article. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget.</p> -->
             </div>
         </section>
@@ -100,7 +94,7 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="post-content">
-                            
+
                                 <h4>ข้อมูลสิ่งของ</h4>
                                 <hr>
                                 <div class="row" style="margin-left: 180px;">
@@ -135,8 +129,8 @@
                                 <div class="row" style="margin-left: 180px;">
 
                                     <div class="col-sm-5">
-                                            <label for="plase_found">รูปภาพ <span class="required">*</span></label>
-                                            <input type="file" name="fileImage"><br>
+                                        <label for="plase_found">รูปภาพ <span class="required">*</span></label>
+                                        <input type="file" name="fileImage"><br>
                                     </div>
                                     <div class="col-sm-5">
                                         <div class="form-group">
@@ -164,14 +158,13 @@
                                     </div>
                                 </div>
                                 <button type="submit" class="btn btn-primary btn-md" style="margin-left: 550px;">Submit</button>
-                                
+                            </div>
+                            <!-- /.post-content-->
                         </div>
-                        <!-- /.post-content-->
                     </div>
                 </div>
-            </div>
-        </section>
-            </form>
+            </section>
+        </form>
 
         <footer class="footer">
             <div class="footer__copyright">
