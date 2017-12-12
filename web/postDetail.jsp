@@ -114,24 +114,29 @@
                             <div class="lostlist_box panel panel-info">
                                 <div class="active_list_content">
                                     <div class="row">
-                                        <% 
+                                        <%
                                             PostDetail post = (PostDetail)session.getAttribute("postDetail");
                                         %>
-                                        <div class="col-sm-5"> <center><div class="box"><a href="https://i.ytimg.com/vi/I9YrKY_jrAY/maxresdefault.jpg" title="" data-lightbox="portfolio" data-title="น้องแมว"><img src="https://i.ytimg.com/vi/I9YrKY_jrAY/maxresdefault.jpg" alt="" class="img-responsive" width="500" height="300"></a></div> </center>
+                                        <div class="col-sm-5"> <center><div class="box"><a href="https://i.ytimg.com/vi/I9YrKY_jrAY/maxresdefault.jpg" title="" data-lightbox="portfolio" data-title="น้องแมว"><img src="img/<%=post.getId()%>.jpg" alt="" class="img-responsive" width="500" height="300"></a></div> </center>
                                         </div>
                                         <div class="col-sm-7"><br>
-                                            <p class="hilight"><span>ข้อมูลของที่เจอ <a class="btn btn-ghost" style="text-align: right;margin-left: 430px;margin-left: 443px;">Edit Post</a></span></p>
+                                            <%
+                                                String email = String.valueOf(session.getAttribute("emailPosts"));
+                                                System.out.println("post.emai : "+post.getEmail());
+                                                System.out.println("emai : "+email);
+                                            %>
+                                            <p class="hilight"><span>ข้อมูลของที่เจอ<%if (email.equals(post.getEmail())){%> <a class="btn btn-ghost" style="text-align: right;margin-left: 430px;margin-left: 443px;">Edit Post</a></span><%}%></p>
                                             <li class="list-group-item"><font class="fielder"><span>ประเภทสิ่งของที่พบเจอ : </span></font> <%=post.getType()%></li>
                                             <li class="list-group-item"><font class="fielder"><span>วันที่พบ : </span></font> <%=post.getDate()%></li>
-                                            <li class="list-group-item"><font class="fielder"><span>ช่วงเวลาที่พบเจอ : </span></font> 10:00 น.</li>
+                                            <li class="list-group-item"><font class="fielder"><span>ช่วงเวลาที่พบเจอ : </span></font> <%=post.getTime()%> น.</li>
                                             <li class="list-group-item"><font class="fielder"><span>เพศ : </span></font> ไม่ระบุเพศ</li>
                                             <li class="list-group-item"><font class="fielder"><span>ชื่อสถานที่ : </span></font> <%=post.getPlace()%></li>
-                                            <li class="list-group-item"><font class="fielder"><span>รายละเอียดเพิ่มเติม : </span></font> <br><%=post.getDetail()%>
+                                            <li class="list-group-item"><font class="fielder"><span>รายละเอียดเพิ่มเติม : </span></font> <%=post.getDetail()%>
                                             <li class="list-group-item"><font class="fielder"><span>สถานะสิ่งของ : </span></font><%=post.getValidate()%><br></li>
                                             </ul>
                                             <p class="hilight"><span><br>ข้อมูลติดต่อกลับ</span></p>
                                             <ul class="list-group">
-                                                <li class="list-group-item"><font class="fielder"><span>ชื่อ-นามสกุล : </span></font><%=post.getFirstName()%><%=post.getLastName()%></li>
+                                                <li class="list-group-item"><font class="fielder"><span>ชื่อ-นามสกุล : </span></font><%=post.getFirstName()%> <%=post.getLastName()%></li>
                                                 <li class="list-group-item"><font class="fielder"><span>เบอร์โทร : </span></font> <%=post.getPhone()%></li>
                                                 <li class="list-group-item"><font class="fielder"><span>อีเมล์ : </span></font> <%=post.getEmail()%></li>
                                             </ul>

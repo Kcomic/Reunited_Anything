@@ -57,6 +57,7 @@ public class LoginServlet extends HttpServlet {
                 member.setFacebook(rs.getString("Facebook"));
                 member.setPhone(rs.getString("Phone"));
                 member.setUploaded(rs.getInt("Uploaded"));
+                session.setAttribute("member", member);
                 response.sendRedirect("HomeServlet");
             } else {
 //                out.println("<head><meta charset=\"utf-8\"></head>");

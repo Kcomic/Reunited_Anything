@@ -17,6 +17,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import model.Member;
 import model.Post;
 
 /**
@@ -25,12 +26,14 @@ import model.Post;
  */
 @WebServlet(name = "HomeServlet", urlPatterns = {"/HomeServlet"})
 public class HomeServlet extends HttpServlet {
-private Connection conn;
+
+    private Connection conn;
+    
 
     public void init() {
         conn = (Connection) getServletContext().getAttribute("connection");
     }
-    
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -42,7 +45,7 @@ private Connection conn;
             stmt.setString(1, "lost");
             ResultSet rs = stmt.executeQuery();
             ArrayList<Post> posts = new ArrayList();
-            while(rs.next()){
+            while (rs.next()) {
                 int idPost = rs.getInt(1);
                 String email = rs.getString(2);
                 String date = rs.getString(3);
@@ -61,7 +64,7 @@ private Connection conn;
             stmt.setString(1, "found");
             rs = stmt.executeQuery();
             ArrayList<Post> found_posts = new ArrayList();
-            while(rs.next()){
+            while (rs.next()) {
                 int idPost = rs.getInt(1);
                 String email = rs.getString(2);
                 String date = rs.getString(3);
@@ -75,11 +78,12 @@ private Connection conn;
                 Post p = new Post(idPost, first_name, email, date, name, pic_base64, type, place, detail, "found", time);
                 found_posts.add(p);
             }
+           
             session.setAttribute("posts", posts);
             session.setAttribute("found_posts", found_posts);
             response.sendRedirect("home.jsp");
-        } catch(Exception e){
-        
+        } catch (Exception e) {
+
         }
     }
 
