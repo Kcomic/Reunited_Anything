@@ -156,31 +156,31 @@
       <div class="container">
         <div class="row">
           <div class="row">
-            <div class="col-lg-12" style="padding-left: 30px;padding-right: 30px;height: 30px;">
-              <div class="col-md-2" style="width: 100px;padding-right: 15px;padding-left: 16px;padding-bottom:5px;">
+            <div class="col-xs-12" style="padding-left: 30px;padding-right: 30px;height: 30px;">
+              <div class="col-xs-2" style="width: 100px;padding-right: 15px;padding-left: 16px;padding-bottom:5px;">
                 <p><b>รูป</b></p>
               </div>
-              <div class="col-md-1" style="padding-left: 15px;padding-right: 15px;">
+              <div class="col-xs-1">
                 <p class="list-group-item-text"><b>ประเภท</b></p>
               </div>
-              <div class="col-md-3" style="padding-left: 30px;">
-                <p class="list-group-item-text" style="padding-right: 15px;"><b>สถาที่หาย</b></p>
+              <div class="col-xs-3">
+                <p class="list-group-item-text" style="padding-right: 15px;"><b>หัวข้อ</b></p>
               </div>
-              <div class="col-md-3" style="padding-left: 15px;width: 267px;">
+              <div class="col-xs-2">
                 <p class="list-group-item-text" style="padding-left: 5px;"><b>ผู้พบเจอ</b></p>
               </div>
-              <div class="col-md-1" style="width: 92px;">
+              <div class="col-xs-1"  style="padding-left: 0px;">
                 <p class="list-group-item-text"><b>วันที่หาย</b></p>
               </div>
-              <div class="col-md-1" style="width: 108px;">
-                <p class="list-group-item-text"><b>สถาที่ที่หาย</b></p>
+              <div class="col-xs-2"  style="padding-left: 0px;">
+                <p class="list-group-item-text"><b>สถานที่หาย</b></p>
               </div>
-              <div class="col-md-1" style="padding-left: 0px;">
+              <div class="col-xs-1" style="padding-left: 0px;">
                 <p class="list-group-item-text"><b>สถานะ</b></p>
               </div>
               </div>
             </div>
-          <div class="col-lg-12">
+          <div class="col-xs-12">
             <div class="list-group">
                  <%  Member userMember = (Member) session.getAttribute("member");
                     String email;
@@ -194,27 +194,27 @@
                             for (Post post : posts){
                         %>
                        <a href="PostDetailServlet?post_id= <%= post.getId() %>&email=<%=email%>" class="list-group-item">
-                    <div class="col-md-2" style="width: 100px;padding-left: 0px;">
+                    <div class="col-xs-2" style="width: 100px;padding-left: 0px;">
                          <figure class="pull-left">
                         <img class="media-object img-rounded img-responsive img-resize"  src="img/<%=post.getId()%>.jpg" alt="" >
                        </figure>
                     </div>
-                    <div class="col-md-1" style="padding-left: 0px;" >
+                    <div class="col-xs-1" style="padding-left: 0px;" >
                         <p class="list-group-item-text wording"> <%= post.getType() %> </p>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-xs-3" style="padding-left: 0px;">
                         <p class="list-group-item-text wording"><%= post.getName() %></p>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-xs-2">
                         <p class="list-group-item-text wording"><%= post.getFirst_name() %></p>
                     </div>
-                    <div class="col-md-1" style="padding-left: 0px;">
+                    <div class="col-xs-1" style="padding-left: 0px;">
                         <p class="list-group-item-text wording"><%= post.getDate() %></p>
                     </div>
-                    <div class="col-md-1" style="padding-left: 0px;">
+                    <div class="col-xs-2" style="padding-left: 0px;">
                         <p class="list-group-item-text wording"><%= post.getPlace() %></p>
                     </div>
-                    <div class="col-md-1" style="padding-left: 0px;width: 150px;">
+                    <div class="col-xs-1" style="padding-left: 10px;">
                         <p class="list-group-item-text wording" style="color:#FF0000;"><%= post.getValidate() %></p>
                     </div>
                 </a>
