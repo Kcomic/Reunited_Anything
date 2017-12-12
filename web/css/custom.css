@@ -41,13 +41,13 @@ span { font-weight: bold; }
 }
 
 .img-resize img {
-width: 100px;
-height: auto;
+height: 100px;
+width: auto;
 }
 
 .img-resize {
-width: 100px;
-height: 64px;
+height: 60px;
+width: auto;
 overflow: hidden;
 text-align: center;
 }
