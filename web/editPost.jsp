@@ -146,8 +146,8 @@
                                             </li>
                                             <li class="list-group-item"><font class="fielder"><span>ชื่อสถานที่ : </span></font><input id="type_found" type="text" placeholder="กรุณาระบุประเภทของที่พบเจอ" class="form-control"></li>
                                             <li class="list-group-item"><font class="fielder"><span>รายละเอียดเพิ่มเติม : </span></font> <br><textarea id="text_add" type="text" placeholder="กรุณากรอกรายละเอียดที่ต้องการแก้ไข" class="pt-form-comment" style="width: 618px; height: 120px;"></textarea><br>
-                                            <li class="list-group-item"><font class="fielder"><span>สถานะสิ่งของ : &nbsp   &nbsp  &nbsp   &nbsp</span></font><input type="radio" name="status" value="find" checked="checked" /> พบเจอแล้ว &nbsp   &nbsp  &nbsp   &nbsp
-                                                <input type="radio" name="status" value="lost" /> ยังไม่พอเจอ
+                                            <li class="list-group-item"><font class="fielder"><span>สถานะสิ่งของ : &nbsp   &nbsp  &nbsp   &nbsp</span></font><input type="radio" name="status" value="find" checked="checked" />  ยังไม่พอเจอ&nbsp   &nbsp  &nbsp   &nbsp
+                                                <input type="radio" name="status" value="lost" /> พบเจอแล้ว
                                                 <br></li>
                                             </ul>
 
@@ -156,7 +156,7 @@
 
                                     </div> </div>
                             </div>
-                            <center><a class="btn btn-ghost";">Save</a></center> 
+                            <center><button type="button" class="btn btn-primary">SAVE</button></center>
                             <hr>
 
                             </body>
@@ -176,57 +176,57 @@
                         <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment-with-locales.min.js"></script>
                         <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/3.1.3/js/bootstrap-datetimepicker.min.js"></script>
                         <script>
-$(function () {
-    var bindDatePicker = function () {
-        $(".date").datetimepicker({
-            format: 'DD-MM-YYYY HH-mm',
-            icons: {
-                time: "fa fa-clock-o",
-                date: "fa fa-calendar",
-                up: "fa fa-arrow-up",
-                down: "fa fa-arrow-down"
-            }
-        }).find('input:first').on("blur", function () {
-            // check if the date is correct. We can accept dd-mm-yyyy and yyyy-mm-dd.
-            // update the format if it's yyyy-mm-dd
-            var date = parseDate($(this).val());
+                            $(function () {
+                                var bindDatePicker = function () {
+                                    $(".date").datetimepicker({
+                                        format: 'DD-MM-YYYY HH-mm',
+                                        icons: {
+                                            time: "fa fa-clock-o",
+                                            date: "fa fa-calendar",
+                                            up: "fa fa-arrow-up",
+                                            down: "fa fa-arrow-down"
+                                        }
+                                    }).find('input:first').on("blur", function () {
+                                        // check if the date is correct. We can accept dd-mm-yyyy and yyyy-mm-dd.
+                                        // update the format if it's yyyy-mm-dd
+                                        var date = parseDate($(this).val());
 
-            if (!isValidDate(date)) {
-                //create date based on momentjs (we have that)
-                date = moment().format('DD-MM-YYYY HH-mm');
-            }
+                                        if (!isValidDate(date)) {
+                                            //create date based on momentjs (we have that)
+                                            date = moment().format('DD-MM-YYYY HH-mm');
+                                        }
 
-            $(this).val(date);
-        });
-    }
+                                        $(this).val(date);
+                                    });
+                                }
 
-    var isValidDate = function (value, format) {
-        format = format || false;
-        // lets parse the date to the best of our knowledge
-        if (format) {
-            value = parseDate(value);
-        }
+                                var isValidDate = function (value, format) {
+                                    format = format || false;
+                                    // lets parse the date to the best of our knowledge
+                                    if (format) {
+                                        value = parseDate(value);
+                                    }
 
-        var timestamp = Date.parse(value);
+                                    var timestamp = Date.parse(value);
 
-        return isNaN(timestamp) == false;
-    }
+                                    return isNaN(timestamp) == false;
+                                }
 
-    var parseDate = function (value) {
-        var m = value.match(/^(\d{1,2})(\/|-)?(\d{1,2})(\/|-)?(\d{4})$/);
-        if (m)
-            value = m[5] + '-' + ("00" + m[3]).slice(-2) + '-' + ("00" + m[1]).slice(-2);
-        var h = d.getHours();
-        h = (h < 10) ? ("0" + h) : h;
+                                var parseDate = function (value) {
+                                    var m = value.match(/^(\d{1,2})(\/|-)?(\d{1,2})(\/|-)?(\d{4})$/);
+                                    if (m)
+                                        value = m[5] + '-' + ("00" + m[3]).slice(-2) + '-' + ("00" + m[1]).slice(-2);
+                                    var h = d.getHours();
+                                    h = (h < 10) ? ("0" + h) : h;
 
-        var m = d.getMinutes();
-        m = (m < 10) ? ("0" + m) : m;
+                                    var m = d.getMinutes();
+                                    m = (m < 10) ? ("0" + m) : m;
 
-        return value;
-    }
+                                    return value;
+                                }
 
-    bindDatePicker();
-});
+                                bindDatePicker();
+                            });
                         </script>
                         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID.-->
                         <!---->
