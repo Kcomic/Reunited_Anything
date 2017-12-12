@@ -85,20 +85,20 @@
                 <!-- <p class="lead">This is the lead paragraph of the article. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget.</p> -->
             </div>
         </section>
-
+        <form enctype="multipart/form-data" action="PostServlet" method="POST">
         <section class="section--little-padding blog-post">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="post-content">
-                            <form>
+                            
                                 <h4>ข้อมูลสิ่งของ</h4>
                                 <hr>
                                 <div class="row" style="margin-left: 180px;">
                                     <div class="col-sm-10">
                                         <div class="form-group">
-                                            <label for="type_found">ชื่อ <span class="required">*</span></label>
-                                            <input id="type_found" type="text" placeholder="กรุณาระบุชื่อหัวข้อกระทู้" class="form-control" >
+                                            <label for="type_found">หัวข้อ <span class="required">*</span></label>
+                                            <input name="name" id="type_found" type="text" placeholder="กรุณาระบุชื่อหัวข้อกระทู้" class="form-control" >
                                         </div>
                                     </div>
                                 </div>
@@ -107,19 +107,19 @@
                                         <div class="form-group">
                                             <label for="inputStatus" style="float:left;">ประเภท  <span class="required">*</span></label><br>
                                             <div class="col" style="margin-right: 250px;">
-                                                <select class="selectpicker" data-live-search="true" style="float:left; width: 300px; height: 31px;">
-                                                    <option data-tokens="ketchup mustard">ทั้งหมด </option>
-                                                    <option data-tokens="mustard">คน</option>
-                                                    <option data-tokens="frosting">สัตว์</option>
+                                                <select name="type" class="selectpicker" data-live-search="true" style="float:left; width: 300px; height: 31px;">
+                                                    <option data-tokens="all">ทั้งหมด </option>
+                                                    <option data-tokens="human">คน</option>
+                                                    <option data-tokens="animal">สัตว์</option>
 
-                                                    <option data-tokens="frosting">สิ่งของ</option>
+                                                    <option data-tokens="item">สิ่งของ</option>
                                                 </select> 
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-sm-5">
                                         <div class="form-group">
-                                            <label for="plase_found">สถานที่พบเจอ <span class="required">*</span></label>
+                                            <label name="place" for="plase_found">สถานที่พบเจอ <span class="required">*</span></label>
                                             <input id="plase_found" type="text" placeholder="กรุณากรอกสถานที่พบเจอ" class="form-control">
                                         </div>
                                     </div>
@@ -127,10 +127,8 @@
                                 <div class="row" style="margin-left: 180px;">
 
                                     <div class="col-sm-5">
-                                        <form name="form1" method="post" action="PageUploadToMySQL2.php" enctype="multipart/form-data">
                                             <label for="plase_found">รูปภาพ <span class="required">*</span></label>
-                                            <input type="file" name="filUpload"><br> 
-                                        </form>
+                                            <input type="file" name="fileImage"><br>
                                     </div>
                                     <div class="col-sm-5">
                                         <div class="form-group">
@@ -139,7 +137,7 @@
                                                 <div class='col-sm-3'>
                                                     <div class="form-group">
                                                         <div class='input-group date' id='datetimepicker1' style="width: 375px;">
-                                                            <input type='text' class="form-control" />
+                                                            <input name="dateTime" type='text' class="form-control" />
                                                             <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
                                                             </span>
                                                         </div>
@@ -153,20 +151,19 @@
                                     <div class="col-sm-6">
                                         <div class="form-group">
                                             <label for="text_add">รายละเอียดเพิ่มเติม <span class="required">*</span></label>
-                                            <textarea id="text_add" type="text" placeholder="  กรุณากรอกรายละเอียดเพิ่มเติม" class="pt-form-comment" style="width: 781px; height: 150px;"></textarea>
+                                            <textarea name ="detail" id="text_add" type="text" placeholder="  กรุณากรอกรายละเอียดเพิ่มเติม" class="pt-form-comment" style="width: 781px; height: 150px;"></textarea>
                                         </div>
                                     </div>
                                 </div>
-                            </form>
-                            <form>
-                                <button type="button" class="btn btn-primary btn-md" style="margin-left: 550px;">Submit</button>
-                            </form>
+                                <button type="submit" class="btn btn-primary btn-md" style="margin-left: 550px;">Submit</button>
+                                
                         </div>
                         <!-- /.post-content-->
                     </div>
                 </div>
             </div>
         </section>
+            </form>
 
         <footer class="footer">
             <div class="footer__copyright">
