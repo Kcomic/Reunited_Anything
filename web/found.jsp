@@ -166,13 +166,13 @@
                 <p class="list-group-item-text" style="padding-right: 15px;"><b>สถาที่หาย</b></p>
               </div>
               <div class="col-md-3" style="padding-left: 15px;width: 267px;">
-                <p class="list-group-item-text" style="padding-left: 5px;"><b>ผู้ตามหา</b></p>
+                <p class="list-group-item-text" style="padding-left: 5px;"><b>ผู้พบเจอ</b></p>
               </div>
               <div class="col-md-1" style="width: 92px;">
                 <p class="list-group-item-text"><b>วันที่หาย</b></p>
               </div>
               <div class="col-md-1" style="width: 108px;">
-                <p class="list-group-item-text"><b>เวลาที่หาย</b></p>
+                <p class="list-group-item-text"><b>สถาที่ที่หาย</b></p>
               </div>
               <div class="col-md-1" style="padding-left: 0px;">
                 <p class="list-group-item-text"><b>สถานะ</b></p>
@@ -185,7 +185,7 @@
                         if (posts != null) {
                             for (Post post : posts){
                         %>
-                        <a href="PostDetailServlet?post_id= <%= post.getId() %>" class="list-group-item">
+                       <a href="PostDetailServlet?post_id= <%= post.getId() %>" class="list-group-item">
                     <div class="col-md-2" style="width: 100px;padding-left: 0px;">
                          <figure class="pull-left">
                         <img class="media-object img-rounded img-responsive img-resize"  src="img/<%=post.getId()%>.jpg" alt="" >
@@ -195,16 +195,16 @@
                         <p class="list-group-item-text wording"> <%= post.getType() %> </p>
                     </div>
                     <div class="col-md-3">
-                        <p class="list-group-item-text wording"><%= post.getPlace() %></p>
+                        <p class="list-group-item-text wording"><%= post.getName() %></p>
                     </div>
                     <div class="col-md-3">
-                        <p class="list-group-item-text wording"><%= post.getName() %></p>
+                        <p class="list-group-item-text wording"><%= post.getFirst_name() %></p>
                     </div>
                     <div class="col-md-1" style="padding-left: 0px;">
                         <p class="list-group-item-text wording"><%= post.getDate() %></p>
                     </div>
                     <div class="col-md-1" style="padding-left: 0px;">
-                        <p class="list-group-item-text wording"><%= post.getTime() %> น.</p>
+                        <p class="list-group-item-text wording"><%= post.getPlace() %></p>
                     </div>
                     <div class="col-md-1" style="padding-left: 0px;width: 150px;">
                         <p class="list-group-item-text wording" style="color:#FF0000;"><%= post.getValidate() %></p>
