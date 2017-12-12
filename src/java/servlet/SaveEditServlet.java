@@ -8,29 +8,25 @@ package servlet;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import model.Post;
-import model.PostDetail;
 
 /**
  *
  * @author Kawin
  */
-@WebServlet(name = "PostDetailServlet", urlPatterns = {"/PostDetailServlet"})
-public class PostDetailServlet extends HttpServlet {
-private Connection conn;
+@WebServlet(name = "SaveEditServlet", urlPatterns = {"/SaveEditServlet"})
+public class SaveEditServlet extends HttpServlet {
+
+    private Connection conn;
 
     public void init() {
         conn = (Connection) getServletContext().getAttribute("connection");
     }
+
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -43,39 +39,28 @@ private Connection conn;
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-         try {
-            String postId = String.valueOf(request.getParameter("post_id"));
-            String emailPost = String.valueOf(request.getParameter("email"));
-            HttpSession session = request.getSession();
-            String sql = "select idPost, Email, Date, Name, Pic_base64, Type, Place, Detail, F_Name, L_Name, Time, Validate, Phone  from post join member using (Email) where idPost = ? order by Date DESC, Time DESC";
-            PreparedStatement stmt = conn.prepareStatement(sql);
-            stmt.setString(1, postId);
-            ResultSet rs = stmt.executeQuery();
-            
-            while(rs.next()){
-                int idPost = rs.getInt(1);
-                String email = rs.getString(2);
-                String date = rs.getString(3);
-                String name = rs.getString(4);
-                String pic_base64 = rs.getString(5);
-                String type = rs.getString(6);
-                String place = rs.getString(7);
-                String detail = rs.getString(8);
-                String firstName = rs.getString(9);
-                String lastName = rs.getString(10);
-                String time = rs.getString(11);
-                String validate = rs.getString(12);
-                String phone = rs.getString(13);
-                PostDetail p = new PostDetail(idPost, firstName, lastName, email, date, name, pic_base64, type, place, detail, "found", time, validate, phone);
-                session.setAttribute("postDetail", p);
-            }
-           // session.setAttribute("foundPosts", foundPosts);
-            System.out.println("emailPosts : " + emailPost);
-            System.out.println("PostsID : " + postId);
-            session.setAttribute("emailPosts", emailPost);
-            response.sendRedirect("postDetail.jsp");
-        } catch(Exception e){
-        
+        try (PrintWriter out = response.getWriter()) {
+            String place = String.valueOf(request.getParameter("place"));
+            String type = String.valueOf(request.getParameter("type"));
+            String dateTime = String.valueOf(request.getParameter("dateTime"));
+            String detail = String.valueOf(request.getParameter("detail"));
+            String validate = String.valueOf(request.getParameter("validate"));
+
+            out.println("place :"+place);
+            out.println("type :"+type);
+            out.println("dateTime :"+dateTime);
+            out.println("detail :"+detail);
+            out.println("validate :"+validate);
+
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet SaveEditServlet</title>");
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>Servlet SaveEditServlet at " + place + "</h1>");
+            out.println("</body>");
+            out.println("</html>");
         }
     }
 

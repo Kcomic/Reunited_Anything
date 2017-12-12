@@ -72,7 +72,7 @@ public class EditPostServlet extends HttpServlet {
             }
            // session.setAttribute("foundPosts", foundPosts);
             
-            response.sendRedirect("postDetail.jsp");
+            response.sendRedirect("editPost.jsp");
         } catch(Exception e){
         
         }

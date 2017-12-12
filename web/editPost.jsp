@@ -127,6 +127,8 @@
                                         <div class="col-sm-5"> <center><div class="box"><a href="https://i.ytimg.com/vi/I9YrKY_jrAY/maxresdefault.jpg" title="" data-lightbox="portfolio" data-title="น้องแมว"><img src="img/<%=post.getId()%>.jpg" alt="" class="img-responsive" width="500" height="300"></a></div> </center>
                                         </div>
                                         <div class="col-sm-7"><br>
+                                            <form action="SaveEditServlet" method="POST">
+                                           
                                             <p class="hilight"><span>ข้อมูลของที่เจอ </span></p>
                                             <li class="list-group-item"><font class="fielder"><span>ประเภทสิ่งของที่พบเจอ : &nbsp;   &nbsp;  &nbsp;</span></font> 
                                                 <div class="col" style="margin-right: 250px;height: 40px;">
@@ -143,14 +145,14 @@
                                                 <div class="form-group">
                                                     <div class='col-sm-3'>
                                                         <div class='input-group date' id='datetimepicker1'>
-                                                            <input type='text' class="form-control" style="width: 200px;"><span class="input-group-addon" ><span class="glyphicon glyphicon-calendar" ></span></span>
+                                                            <input name="dateTime" type='text' class="form-control" style="width: 200px;"><span class="input-group-addon" ><span class="glyphicon glyphicon-calendar" ></span></span>
                                                         </div>
                                                     </div>s
                                                 </div>
                                             </li>
-                                            <li class="list-group-item"><font class="fielder"><span>ชื่อสถานที่ : </span></font><input id="type_found" type="text" placeholder="<%=post.getPlace()%>" class="form-control"></li>
-                                            <li class="list-group-item"><font class="fielder"><span>รายละเอียดเพิ่มเติม : </span></font> <br><textarea id="text_add" type="text" placeholder="กรุณากรอกรายละเอียดที่ต้องการแก้ไข" class="pt-form-comment" style="width: 618px; height: 120px;"></textarea><br>
-                                            <li class="list-group-item"><font class="fielder"><span>สถานะสิ่งของ : &nbsp   &nbsp  &nbsp   &nbsp</span></font><input type="radio" name="status" value="find" checked="checked" />  ยังไม่พอเจอ&nbsp   &nbsp  &nbsp   &nbsp
+                                            <li class="list-group-item"><font class="fielder"><span>ชื่อสถานที่ : </span></font><input id="type_found" name="place" type="text" placeholder="<%=post.getPlace()%>" class="form-control"></li>
+                                            <li class="list-group-item"><font class="fielder"><span>รายละเอียดเพิ่มเติม : </span></font> <br><textarea id="text_add" name="detail" type="text" placeholder="<%=post.getDetail()%>" class="pt-form-comment" style="width: 618px; height: 120px;"></textarea><br>
+                                            <li class="list-group-item"><font class="fielder"><span>สถานะสิ่งของ : &nbsp   &nbsp  &nbsp   &nbsp</span></font><input type="radio" name="validate" value="find" checked="checked" />  ยังไม่พอเจอ&nbsp   &nbsp  &nbsp   &nbsp
                                                 <input type="radio" name="status" value="lost" /> พบเจอแล้ว
                                                 <br></li>
                                             </ul>
@@ -160,7 +162,8 @@
 
                                     </div> </div>
                             </div>
-                            <center><button type="button" class="btn btn-primary">SAVE</button></center>
+                                            <center><button type="submit" class="btn btn-primary">SAVE</button></center> 
+                                             </form>
                             <hr>
 
                             </body>
