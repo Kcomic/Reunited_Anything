@@ -149,8 +149,8 @@
     <link href='http://fonts.googleapis.com/css?family=Raleway:400,200' rel='stylesheet' type='text/css'>
 
     <div class="container">
-      <div class="col-6 col-md-4"></div>
-      <div class="col-md-4 col-xs-4">
+      <div class="row">
+      <div class="col-md-5">
         <div class="profile-block">
           <div class="panel text-center">
             <% if(member.getUploaded() == 0){%>
@@ -166,8 +166,75 @@
                 <button type="button" class="btn btn-primary" style="width: 200px;"><i class="fa fa-pencil-square-o"></i>Edit profile</button>
             </ul>
           </div>
-        </div>           
-      </div>
+        </div>          
+        </div>
+        <div class="col-md-6">
+            <h3>ประวัติของที่ตามหาและของที่พบ</h3>
+            <div class="list-group">
+                <a href="#" class="list-group-item">
+                    <div class="col-xs-3">
+                        <figure class="pull-left">
+                        <img class="media-object img-rounded img-responsive img-resize "   src="img/head.png" alt="" >
+                       </figure>
+                    </div>
+                    <div class="col-xs-4">
+                        <h4 class="list-group-item-heading"> ไรอันคุง </h4>
+                        <p class="list-group-item-text">วันที่หาย: 15/10/2014</p>
+                        <p class="list-group-item-text">เวลาที่หาย: 16.00 น.</p>
+                    </div>
+                    <div class="col-xs-5">
+                        <p class="list-group-item-text" style="padding-top:20px;padding-left:5px;">เจ้าของ: น้องน้ำฝน</p>
+                    </div>
+                </a>
+                <a href="#" class="list-group-item">
+                    <div class="col-xs-3">
+                        <figure class="pull-left">
+                        <img class="media-object img-rounded img-responsive img-resize"  src="img/lost2.jpg" alt="" >
+                       </figure>
+                    </div>
+                    <div class="col-xs-4">
+                        <h4 class="list-group-item-heading"> ไรอันคุง </h4>
+                        <p class="list-group-item-text"><b>วันที่หาย:</b> 15/10/2014</p>
+                        <p class="list-group-item-text">เวลาที่หาย: 16.00 น.</p>
+                    </div>
+                    <div class="col-xs-4">
+                        <p class="list-group-item-text" style="padding-top:20px;padding-left:5px;">เจ้าของ: น้องน้ำฝน</p>
+                    </div>
+                </a>
+                <a href="#" class="list-group-item">
+                    <div class="col-xs-3">
+                        <figure class="pull-left">
+                        <img class="media-object img-rounded img-responsive img-resize"  src="img/lost2.jpg" alt="" >
+                       </figure>
+                    </div>
+                    <div class="col-xs-4">
+                        <h4 class="list-group-item-heading"> ไรอันคุง </h4>
+                        <p class="list-group-item-text"><b>วันที่หาย:</b> 15/10/2014</p>
+                        <p class="list-group-item-text">เวลาที่หาย: 16.00 น.</p>
+                    </div>
+                    <div class="col-xs-4">
+                        <p class="list-group-item-text" style="padding-top:20px;padding-left:5px;">เจ้าของ: น้องน้ำฝน</p>
+                    </div>
+                </a>
+        </div>
+            <div class="row text-center">
+                <ul class="pagination">
+                    <li>
+                        <a href="#">&laquo;</a>
+                    </li>
+                    <li class="active">
+                        <a href="#">1</a>
+                    </li>
+                    <li>
+                        <a href="#">2</a>
+                    </li>
+                    <li>
+                        <a href="#">&raquo;</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
     </div>
     
     <footer class="footer">
