@@ -153,7 +153,7 @@
                             </div>
                         </div> 
                     </div>
-                    <div><button type="ok" class="btn btn-primary" class=".col-"> บันทึกการเปลี่ยนแปลง </button></div>  
+                    <div><button type="ok" class="btn btn-primary" class=".col-"> บันทึกการเปลี่ยนแปลง </button></div><br>  
                 </form>
             </div>
         </div>
