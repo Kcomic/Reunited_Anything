@@ -10,6 +10,7 @@ import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -20,19 +21,21 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import model.Member;
+import model.PostDetail;
 
 /**
  *
  * @author Kawin
  */
-@WebServlet(name = "SaveEditServlet", urlPatterns = {"/SaveEditServlet"})
-public class SaveEditServlet extends HttpServlet {
+@WebServlet(name = "PostCommentServlet", urlPatterns = {"/PostCommentServlet"})
+public class PostCommentServlet extends HttpServlet {
 
     private Connection conn;
-    private String time, date;
+    private String time, date, icon;
 
     public void init() {
         conn = (Connection) getServletContext().getAttribute("connection");
+
     }
 
     /**
@@ -46,40 +49,27 @@ public class SaveEditServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.setCharacterEncoding("UTF-8");
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            String place = String.valueOf(request.getParameter("place"));
-            String type = String.valueOf(request.getParameter("type"));
-            String dateTime = String.valueOf(request.getParameter("dateTime"));
-            String detail = String.valueOf(request.getParameter("detail"));
-            String validate = String.valueOf(request.getParameter("validate"));
-            String postId = String.valueOf(request.getParameter("post_id"));
+            String comment = String.valueOf(request.getParameter("comment"));
+            int postId = Integer.parseInt(String.valueOf(request.getParameter("post_id")));
+            DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            Date date = new Date();
+            System.out.println(dateFormat.format(date)); //2016/11/16 12:08:43
+            
             HttpSession session = request.getSession();
             Member member = (Member) session.getAttribute("member");
 
-            convertTime(dateTime, out);
-            String sql = "UPDATE `reunited_anything`.`post` SET `Date`= ?, `Type`= ?, `Place`= ?, `Detail`= ?, `Time`= ?, `Validate`= ? WHERE `idPost`= ?";
-
-            String sql1 = "UPDATE `reunited_anything`.`post` SET `Type`= ?, `Place`= ?, `Detail`= ?, `Validate`=?, `Date`=?, `Time`=? WHERE `idPost`= ?";
-
+            String sql = "INSERT INTO `reunited_anything`.`comment` (`Email`, `DateTime`, `detail`, `idPost`) VALUES (?, ?, ?, ?)";
             PreparedStatement stmt = conn.prepareStatement(sql);
-            stmt.setString(1, date);
-            stmt.setString(2, type);
-            stmt.setString(3, place);
-            stmt.setString(4, detail);
-            stmt.setString(5, time);
-            stmt.setString(6, validate);         
-            stmt.setString(7, postId);
+            stmt.setString(1, member.getEmail());
+            stmt.setString(2, dateFormat.format(date));
+            stmt.setString(3, comment);
+            stmt.setInt(4, postId);
             stmt.executeUpdate();
 
-            out.println("postId :" + postId);
-            out.println("place :" + place);
-            out.println("type :" + type);
-            out.println("dateTime :" + dateTime);
-            out.println("detail :" + detail);
-            out.println("validate :" + validate);
-            response.sendRedirect("PostDetailServlet?post_id=" + postId + "&email=" + member.getEmail());
+            response.sendRedirect("home.jsp");
+            // response.sendRedirect("PostDetailServlet?post_id=" + postId + "&email=" + member.getEmail());
         } catch (Exception e) {
 
         }
@@ -95,7 +85,7 @@ public class SaveEditServlet extends HttpServlet {
             sdf.applyPattern(NEW_FORMAT);
             date = sdf.format(d);
         } catch (ParseException ex) {
-            
+
         }
         time = datetime.split(" ")[1];
         time = time.replace("-", ":");

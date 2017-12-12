@@ -144,11 +144,11 @@
                                                             <div class='input-group date' id='datetimepicker1'>
                                                                 <input name="dateTime" type='text' class="form-control" style="width: 200px;"><span class="input-group-addon" ><span class="glyphicon glyphicon-calendar" ></span></span>
                                                             </div>
-                                                        </div>s
+                                                        </div>
                                                     </div>
                                                 </li>
-                                                <li class="list-group-item"><font class="fielder"><span>ชื่อสถานที่ : </span></font><input id="type_found" name="place" type="text" text="<%=post.getPlace()%>" class="form-control"></li>
-                                                <li class="list-group-item"><font class="fielder"><span>รายละเอียดเพิ่มเติม : </span></font> <br><textarea id="text_add" name="detail" type="text" placeholder="<%=post.getDetail()%>" class="pt-form-comment" style="width: 618px; height: 120px;"></textarea><br>
+                                                <li class="list-group-item"><font class="fielder"><span>ชื่อสถานที่ : </span></font><input id="type_found" name="place" type="text" value="<%=post.getPlace()%>" placeholder="<%=post.getDetail()%>" class="form-control"></li>
+                                                <li class="list-group-item"><font class="fielder"><span>รายละเอียดเพิ่มเติม : </span></font> <br><textarea id="text_add" name="detail" type="text"  placeholder="<%=post.getDetail()%>" class="form-comment" style="width: 618px; height: 120px;"><%=post.getDetail()%></textarea><br>
                                                 <li class="list-group-item"><font class="fielder"><span>สถานะสิ่งของ : &nbsp   &nbsp  &nbsp   &nbsp</span></font>
                                                     <input type="radio" name="validate" value="wait" checked="checked" />  ยังไม่พอเจอ&nbsp   &nbsp  &nbsp   &nbsp
                                                     <input type="radio" name="validate" value="finish" /> พบเจอแล้ว

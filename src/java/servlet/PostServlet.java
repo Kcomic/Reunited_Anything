@@ -34,9 +34,9 @@ import model.Member;
 @WebServlet(name = "PostServlet", urlPatterns = {"/PostServlet"})
 public class PostServlet extends HttpServlet {
 
-    private Connection conn;
     Member member;
     String time, date, icon;
+    private Connection conn;
 
     public void init() {
         conn = (Connection) getServletContext().getAttribute("connection");
@@ -54,10 +54,10 @@ public class PostServlet extends HttpServlet {
             if (filePart.getContentType().equals("image/jpeg")) {
                 System.out.println("file success");
                 insertToDatabase(request, out);
-                
-                File save = new File("E:\\Reunited_Anything\\web\\img", icon+".jpg");
+
+                File save = new File("E:\\Reunited_Anything\\web\\img", icon + ".jpg");
                 filePart.write(save.getAbsolutePath());
-                
+
                 out.println("<script type=\"text/javascript\">");
                 out.println("alert('Post Successfull');");
                 out.println("location='HomeServlet';");
@@ -111,7 +111,7 @@ public class PostServlet extends HttpServlet {
             ResultSet rs = stmt.executeQuery();
             rs.next();
             icon = String.valueOf(rs.getInt(1) + 1);
-            System.out.println(email+name+type+place+date+time+detail+status);
+            System.out.println(email + name + type + place + date + time + detail + status);
             sql = "insert into post(Email, Date, Name, Pic_base64, Type, Place, Detail, Status, Time, Validate) values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
             stmt = conn.prepareStatement(sql);
             stmt.setString(1, email);

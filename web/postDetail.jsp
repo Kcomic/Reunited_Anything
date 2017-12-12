@@ -115,17 +115,17 @@
                                 <div class="active_list_content">
                                     <div class="row">
                                         <%
-                                            PostDetail post = (PostDetail)session.getAttribute("postDetail");
+                                            PostDetail post = (PostDetail) session.getAttribute("postDetail");
                                         %>
                                         <div class="col-sm-5"> <center><div class="box"><a href="https://i.ytimg.com/vi/I9YrKY_jrAY/maxresdefault.jpg" title="" data-lightbox="portfolio" data-title="น้องแมว"><img src="img/<%=post.getId()%>.jpg" alt="" class="img-responsive" width="500" height="300"></a></div> </center>
                                         </div>
                                         <div class="col-sm-7"><br>
                                             <%
                                                 String email = String.valueOf(session.getAttribute("emailPosts"));
-                                                System.out.println("post.emai : "+post.getEmail());
-                                                System.out.println("emai : "+email);
+                                                System.out.println("post.emai : " + post.getEmail());
+                                                System.out.println("emai : " + email);
                                             %>
-                                            <p class="hilight"><span>ข้อมูลของที่เจอ<%if (email.equals(post.getEmail())){%> <a href="EditPostServlet?post_id=<%=post.getId()%>" class="btn btn-ghost" style="text-align: right;margin-left: 430px;margin-left: 443px;">Edit Post</a></span><%}%></p>
+                                            <p class="hilight"><span>ข้อมูลของที่เจอ<%if (email.equals(post.getEmail())) {%> <a href="EditPostServlet?post_id=<%=post.getId()%>" class="btn btn-ghost" style="text-align: right;margin-left: 430px;margin-left: 443px;">Edit Post</a></span><%}%></p>
                                             <li class="list-group-item"><font class="fielder"><span>ประเภทสิ่งของที่พบเจอ : </span></font> <%=post.getType()%></li>
                                             <li class="list-group-item"><font class="fielder"><span>วันที่พบ : </span></font> <%=post.getDate()%></li>
                                             <li class="list-group-item"><font class="fielder"><span>ช่วงเวลาที่พบเจอ : </span></font> <%=post.getTime()%> น.</li>
@@ -174,42 +174,29 @@
                                 <!-- /.comment-->
                             </div>
                             <div class="comment-form">
-                                <h4>Leave comment</h4>
-                                <form>
-                                    <div class="row">
-                                        <div class="col-sm-6">
-                                            <div class="form-group">
-                                                <label for="name">Name <span class="required">*</span></label>
-                                                <input id="name" type="text" class="form-control">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-sm-6">
-                                            <div class="form-group">
-                                                <label for="email">Email <span class="required">*</span></label>
-                                                <input id="email" type="text" class="form-control">
-                                            </div>
-                                        </div>
-                                    </div>
+                                <form action="PostCommentServlet?post_id=<%=post.getId()%>" method="POST">
+
+                                    <h4>Leave comment</h4>
+
+
                                     <div class="row">
                                         <div class="col-sm-12">
                                             <div class="form-group">
                                                 <label for="comment">Comment <span class="required">*</span></label>
-                                                <textarea id="comment" rows="4" class="form-control"></textarea>
+                                                <textarea id="comment" name="comment" rows="4" class="form-control"></textarea>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-sm-12 text-right">
-                                            <button type="button" class="btn btn-primary"><i class="fa fa-comment-o"></i> Post comment</button>
+                                            <button type="submit" class="btn btn-primary"><i class="fa fa-comment-o"></i> Post comment</button>
                                         </div>
                                     </div>
                                 </form>
+
                             </div><br><br>
                             </body>
                             </center>
-
 
                         </div>
 
