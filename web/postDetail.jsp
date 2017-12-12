@@ -125,7 +125,7 @@
                                                 System.out.println("post.emai : "+post.getEmail());
                                                 System.out.println("emai : "+email);
                                             %>
-                                            <p class="hilight"><span>ข้อมูลของที่เจอ<%if (email.equals(post.getEmail())){%> <a class="btn btn-ghost" style="text-align: right;margin-left: 430px;margin-left: 443px;">Edit Post</a></span><%}%></p>
+                                            <p class="hilight"><span>ข้อมูลของที่เจอ<%if (email.equals(post.getEmail())){%> <a href="EditPostServlet?post_id=<%=post.getId()%>" class="btn btn-ghost" style="text-align: right;margin-left: 430px;margin-left: 443px;">Edit Post</a></span><%}%></p>
                                             <li class="list-group-item"><font class="fielder"><span>ประเภทสิ่งของที่พบเจอ : </span></font> <%=post.getType()%></li>
                                             <li class="list-group-item"><font class="fielder"><span>วันที่พบ : </span></font> <%=post.getDate()%></li>
                                             <li class="list-group-item"><font class="fielder"><span>ช่วงเวลาที่พบเจอ : </span></font> <%=post.getTime()%> น.</li>

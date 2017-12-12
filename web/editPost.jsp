@@ -4,6 +4,7 @@
     Author     : Administrator
 --%>
 
+<%@page import="model.PostDetail"%>
 <%@page import="model.Member"%>
 <%@page import="java.util.List"%>
 <%@page import="model.Post"%>
@@ -120,7 +121,10 @@
                             <div class="lostlist_box panel panel-info">
                                 <div class="active_list_content">
                                     <div class="row">
-                                        <div class="col-sm-5"> <center><div class="box"><a href="https://i.ytimg.com/vi/I9YrKY_jrAY/maxresdefault.jpg" title="" data-lightbox="portfolio" data-title="น้องแมว"><img src="https://i.ytimg.com/vi/I9YrKY_jrAY/maxresdefault.jpg" alt="" class="img-responsive" width="500" height="300"></a></div> </center>
+                                        <%
+                                            PostDetail post = (PostDetail)session.getAttribute("postDetail");
+                                        %>
+                                        <div class="col-sm-5"> <center><div class="box"><a href="https://i.ytimg.com/vi/I9YrKY_jrAY/maxresdefault.jpg" title="" data-lightbox="portfolio" data-title="น้องแมว"><img src="img/<%=post.getId()%>.jpg" alt="" class="img-responsive" width="500" height="300"></a></div> </center>
                                         </div>
                                         <div class="col-sm-7"><br>
                                             <p class="hilight"><span>ข้อมูลของที่เจอ </span></p>
@@ -144,7 +148,7 @@
                                                     </div>s
                                                 </div>
                                             </li>
-                                            <li class="list-group-item"><font class="fielder"><span>ชื่อสถานที่ : </span></font><input id="type_found" type="text" placeholder="กรุณาระบุประเภทของที่พบเจอ" class="form-control"></li>
+                                            <li class="list-group-item"><font class="fielder"><span>ชื่อสถานที่ : </span></font><input id="type_found" type="text" placeholder="<%=post.getPlace()%>" class="form-control"></li>
                                             <li class="list-group-item"><font class="fielder"><span>รายละเอียดเพิ่มเติม : </span></font> <br><textarea id="text_add" type="text" placeholder="กรุณากรอกรายละเอียดที่ต้องการแก้ไข" class="pt-form-comment" style="width: 618px; height: 120px;"></textarea><br>
                                             <li class="list-group-item"><font class="fielder"><span>สถานะสิ่งของ : &nbsp   &nbsp  &nbsp   &nbsp</span></font><input type="radio" name="status" value="find" checked="checked" />  ยังไม่พอเจอ&nbsp   &nbsp  &nbsp   &nbsp
                                                 <input type="radio" name="status" value="lost" /> พบเจอแล้ว

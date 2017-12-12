@@ -10,27 +10,28 @@ import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import model.Post;
 import model.PostDetail;
 
 /**
  *
  * @author Kawin
  */
-@WebServlet(name = "PostDetailServlet", urlPatterns = {"/PostDetailServlet"})
-public class PostDetailServlet extends HttpServlet {
-private Connection conn;
+@WebServlet(name = "EditPostServlet", urlPatterns = {"/EditPostServlet"})
+public class EditPostServlet extends HttpServlet {
+
+    private Connection conn;
+    
 
     public void init() {
         conn = (Connection) getServletContext().getAttribute("connection");
     }
+
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -45,7 +46,7 @@ private Connection conn;
         response.setContentType("text/html;charset=UTF-8");
          try {
             String postId = String.valueOf(request.getParameter("post_id"));
-            String emailPost = String.valueOf(request.getParameter("email"));
+         
             HttpSession session = request.getSession();
             String sql = "select idPost, Email, Date, Name, Pic_base64, Type, Place, Detail, F_Name, L_Name, Time, Validate, Phone  from post join member using (Email) where idPost = ? order by Date DESC, Time DESC";
             PreparedStatement stmt = conn.prepareStatement(sql);
@@ -70,10 +71,8 @@ private Connection conn;
                 session.setAttribute("postDetail", p);
             }
            // session.setAttribute("foundPosts", foundPosts);
-            System.out.println("emailPosts : " + emailPost);
-            System.out.println("PostsID : " + postId);
-            session.setAttribute("emailPosts", emailPost);
-            response.sendRedirect("editPost.jsp");
+            
+            response.sendRedirect("postDetail.jsp");
         } catch(Exception e){
         
         }
