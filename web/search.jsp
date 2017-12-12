@@ -63,80 +63,83 @@
       <div class="container">
         <div class="breadcrumbs">
           <ul class="breadcrumb">
-            <li><a href="home.jsp">หน้าแรก</a></li>
-            <li><a href="register.html">ค้นหา</a></li>
+            <li><a href="index.html">หน้าแรก</a></li>
+            <li>ค้นหา</li>
           </ul>
         </div>
+        <div class="row">
+        <div class="col-xs-3">
         <h1 class="heading">ค้นหา</h1>
-        <!-- <p class="lead">This is the lead paragraph of the article. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget.</p> -->
+        </div>
+        </div>
       </div>
     </section>
-    <section class="section--little-padding blog-post">
+    <section class="section--little-padding blog-post" style="margin-left: 370px;">
       <div class="container">
         <div class="row">
-          <div class="col-lg-8">
+          <div class="col-sm-12">
             <div class="post-content">
-                <form action="Register.do" method="POST">
-                <h4>อีเมลและรหัสผ่าน</h4>
-                <hr>
+              <form>
+              <!-- <h4>ค้นหารายการของ</h4>
+                <hr> -->
                 <div class="row">
                   <div class="col-sm-6">
                     <div class="form-group">
-                      <label for="email">อีเมล <span class="required">*</span></label>
-                      <input id="email" type="text" placeholder="กรุณาระบุอีเมลสถาบันของท่าน" class="form-control" name="Email">
+                      <div class="col-sm-3" style="padding-left: 0px;">
+                        <label for="inputStatus">ต้องการค้นหา</label>
+                      </div>
+                      <label class="radio-inline"><input type="radio" style="margin-top: 7px;" checked="checked" name="optradio">ทั้งหมด</label>
+                      <label class="radio-inline"><input type="radio" style="margin-top: 7px;" name="optradio">ของหาย</label>
+                      <label class="radio-inline"><input type="radio" style="margin-top: 7px;" name="optradio">ของที่พบ</label>
                     </div>
                   </div>
                 </div>
+
+            <div class="col-sm-6">
+            <div class="form-group row">
+              <label for="inputStatus" style="float:left;">ประเภท</label>
+                      <div class="col-sm-2">
+                        <select class="selectpicker" data-live-search="true" style="float:left; width: 150px;">
+                            <option data-tokens="ketchup mustard">ทั้งหมด </option>
+                            <option data-tokens="mustard">คน</option>
+                            <option data-tokens="frosting">สัตว์</option>
+                            <option data-tokens="frosting">สิ่งของ</option>
+                        </select>
+                      </div>
+                      </div>
+                      </div>
+
                 <div class="row">
-                  <div class="col-sm-6">
+                  <div class="col-sm-8">
                     <div class="form-group">
-                      <label for="password">รหัสผ่าน <span class="required">*</span></label>
-                      <input id="password" type="password" placeholder="กรุณากรอกรหัสผ่าน" class="form-control" name="Password">
+                      <div class="col-sm-3" style="padding-left: 0px;">
+                        <label for="inputStatus">สถานที่</label>
+                      </div>
+                      <input type="text" placeholder="สถานที่" class="form-control">
                     </div>
                   </div>
                 </div>
+
                 <div class="row">
-                  <div class="col-sm-6">
+                  <div class="col-sm-8">
                     <div class="form-group">
-                      <label for="cfPassword">รหัสผ่านอีกครั้ง <span class="required">*</span></label>
-                      <input id="cfPassword" type="password" placeholder="กรุณากรอกรหัสผ่านอีกครั้ง" class="form-control" name="C_Password">
+                      <div class="col-sm-3" style="padding-left: 0px;">
+                        <label for="inputStatus">รายละเอียด</label>
+                      </div>
+                      <input type="text" placeholder="รายละเอียด" class="form-control">
                     </div>
                   </div>
                 </div>
-           
-                <h4>ข้อมูลส่วนตัว</h4>
-                <hr>
-                  <div class="row">
-                  <div class="col-xs-6 col-sm-6 col-md-6">
-                    <div class="form-group">
-                      <label for="firstName">ชื่อ <span class="required">*</span></label>
-                      <input id="firstName" type="text" placeholder="กรุณาระบุชื่อของท่าน" class="form-control" name="F_Name">
-                    </div>
-                  </div>
-                  <div class="col-xs-6 col-sm-6 col-md-6">
-                    <div class="form-group">
-                      <label for="lastName">นามสกุล <span class="required">*</span></label>
-                      <input id="lastName" type="text" placeholder="กรุณาระบุนามสกุลของท่าน" class="form-control" name="L_Name">
-                    </div>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-sm-6">
-                    <div class="form-group">
-                      <label for="phoneNumber">เบอร์โทรศัพท์ <span class="required">*</span></label>
-                      <input id="phoneNumber" type="text" placeholder="กรุณาระบุเบอร์โทรศัพท์ของท่าน" class="form-control" name="Phone">
-                    </div>
-                  </div>
-                </div>
+
                 <div class="row">
                   <div class="col-sm-12">
-                    <button type="submit" class="btn btn-primary">สมัครสมาชิก</button>
+                    <button type="button" class="btn btn-primary"><i class="fa fa-search"></i>ค้นหา</button>
                   </div>
                 </div>
-            </form>
+              </form>
             </div>
             <!-- /.post-content-->
-         </div>
+          </div>
         </div>
       </div>
     </section>

@@ -155,7 +155,7 @@
             <% if(member.getUploaded() == 0){%>
             <div class="user-heading"><img style="border-radius: 100%;" src="http://cumbrianrun.co.uk/wp-content/uploads/2014/02/default-placeholder-300x300.png" width="250" height="250"><br><br>
                 <% } else{ System.out.println("img/"+member.getEmail()+".jpg");%>
-            <div class="user-heading"><img style="border-radius: 100%;" src="img/<%=member.getEmail()%>.jpg" width="250" height="250"><br><br>
+            <div class="user-heading"><img style="border-radius: 100%;" src="img/Profiles/<%=member.getEmail()%>.jpg" width="250" height="250"><br><br>
             <% } %>
                 <h2><%=member.getFirstName()%> <%= member.getLastName()%></h2>
               <p><span class="fa fa-envelope" style="width:50px"></span><%=member.getEmail()%></p>
