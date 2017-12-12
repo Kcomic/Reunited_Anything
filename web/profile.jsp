@@ -157,9 +157,9 @@
                 <% } else{ System.out.println("img/"+member.getEmail()+".jpg");%>
             <div class="user-heading"><img style="border-radius: 100%;" src="img/<%=member.getEmail()%>.jpg" width="250" height="250"><br><br>
             <% } %>
-                <h2>ปิยาภา โอภาสพันธ์</h2>
-              <p><span class="fa fa-envelope" style="width:50px"></span>gracegapi@gmail.com</p>
-              <p><span class="fa fa-phone" style="width:50px" align = "center"></span>087-972-5608</p>
+                <h2><%=member.getFirstName()%> <%= member.getLastName()%></h2>
+              <p><span class="fa fa-envelope" style="width:50px"></span><%=member.getEmail()%></p>
+              <p><span class="fa fa-phone" style="width:50px" align = "center"></span><%=member.getPhone()%></p>
             </div>
             <ul class="nav nav-pills nav-stacked">  
               <li class="active"><a href="#"><i class="fa fa-pencil-square-o"></i>Edit profile</a></li> 
