@@ -13,12 +13,14 @@ public class Comment {
     private String email;
     private String dateTime;
     private String detail;
+    private String name;
     private String postId;
 
-    public Comment(String email, String dateTime, String detail, String postId) {
+    public Comment(String email, String dateTime, String detail, String firstname, String lastname, String postId) {
         this.email = email;
         this.dateTime = dateTime;
         this.detail = detail;
+        this.name = firstname+" "+lastname;
         this.postId = postId;
     }
 
@@ -46,6 +48,14 @@ public class Comment {
         this.detail = detail;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public String getPostId() {
         return postId;
     }
@@ -53,6 +63,10 @@ public class Comment {
     public void setPostId(String postId) {
         this.postId = postId;
     }
+    
+    
+    
+
     
     
     

@@ -10,13 +10,17 @@ import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import model.Comment;
 import model.Post;
 import model.PostDetail;
 
@@ -26,11 +30,13 @@ import model.PostDetail;
  */
 @WebServlet(name = "PostDetailServlet", urlPatterns = {"/PostDetailServlet"})
 public class PostDetailServlet extends HttpServlet {
-private Connection conn;
+
+    private Connection conn;
 
     public void init() {
         conn = (Connection) getServletContext().getAttribute("connection");
     }
+
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -43,7 +49,7 @@ private Connection conn;
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-         try {
+        try {
             String postId = String.valueOf(request.getParameter("post_id"));
             String emailPost = String.valueOf(request.getParameter("email"));
             HttpSession session = request.getSession();
@@ -51,8 +57,8 @@ private Connection conn;
             PreparedStatement stmt = conn.prepareStatement(sql);
             stmt.setString(1, postId);
             ResultSet rs = stmt.executeQuery();
-            
-            while(rs.next()){
+
+            while (rs.next()) {
                 int idPost = rs.getInt(1);
                 String email = rs.getString(2);
                 String date = rs.getString(3);
@@ -69,13 +75,34 @@ private Connection conn;
                 PostDetail p = new PostDetail(idPost, firstName, lastName, email, date, name, pic_base64, type, place, detail, "found", time, validate, phone);
                 session.setAttribute("postDetail", p);
             }
-           // session.setAttribute("foundPosts", foundPosts);
+            String sqlComment = "SELECT Email, DateTime, detail, F_Name, L_Name FROM reunited_anything.comment join member using (Email) where idPost = ?";
+            stmt = conn.prepareStatement(sqlComment);
+            stmt.setInt(1, Integer.parseInt(postId));
+            ResultSet rsCment = stmt.executeQuery();
+            ArrayList<Comment> listComment = new ArrayList();
+            while (rsCment.next()) {
+                System.out.println("aaaaaaaaaaa : "+ rs.getString(1));
+//                String email1 = rs.getString(1);
+//                DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+//                Date date = rs.getDate(2);
+//                String detail = rs.getString(3);
+//                String firstName = rs.getString(4);
+//                String LastName = rs.getString(5);
+                
+
+                
+             //   Comment comment = new Comment(email, dateFormat.format(date), detail, firstName, LastName, postId);
+
+            //    listComment.add(comment);
+            }
+
+            session.setAttribute("listComment", listComment);
             System.out.println("emailPosts : " + emailPost);
             System.out.println("PostsID : " + postId);
             session.setAttribute("emailPosts", emailPost);
             response.sendRedirect("postDetail.jsp");
-        } catch(Exception e){
-        
+        } catch (Exception e) {
+
         }
     }
 
