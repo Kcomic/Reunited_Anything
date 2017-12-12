@@ -116,7 +116,7 @@
                                         <div class="col-sm-5"> <center><div class="box"><a href="https://i.ytimg.com/vi/I9YrKY_jrAY/maxresdefault.jpg" title="" data-lightbox="portfolio" data-title="น้องแมว"><img src="https://i.ytimg.com/vi/I9YrKY_jrAY/maxresdefault.jpg" alt="" class="img-responsive" width="500" height="300"></a></div> </center>
                                         </div>
                                         <div class="col-sm-7"><br>
-                                            <p class="hilight"><span>ข้อมูลของที่เจอ <a class="btn btn-ghost" style="text-align: right;margin-left: 430+;margin-left: 443px;">Edit Post</a></span></p>
+                                            <p class="hilight"><span>ข้อมูลของที่เจอ <a class="btn btn-ghost" style="text-align: right;margin-left: 430px;margin-left: 443px;">Edit Post</a></span></p>
                                             <li class="list-group-item"><font class="fielder"><span>ประเภทสิ่งของที่พบเจอ : </span></font> สัตว์เลี้ยง</li>
                                             <li class="list-group-item"><font class="fielder"><span>วันที่พบ : </span></font> 14 กันยายน 2558</li>
                                             <li class="list-group-item"><font class="fielder"><span>ช่วงเวลาที่พบเจอ : </span></font> 10:00 น.</li>
