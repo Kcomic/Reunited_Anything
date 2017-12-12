@@ -9,6 +9,7 @@
 <%@page import="model.Post"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
     <head>
         <meta charset="utf-8">
@@ -116,11 +117,10 @@
                                         <div class="col-sm-5"> <center><div class="box"><a href="https://i.ytimg.com/vi/I9YrKY_jrAY/maxresdefault.jpg" title="" data-lightbox="portfolio" data-title="น้องแมว"><img src="https://i.ytimg.com/vi/I9YrKY_jrAY/maxresdefault.jpg" alt="" class="img-responsive" width="500" height="300"></a></div> </center>
                                         </div>
                                         <div class="col-sm-7"><br>
-                                            <p class="hilight"><span>ข้อมูลของที่เจอ <a class="btn btn-ghost" style="text-align: right;margin-left: 430px;margin-left: 443px;">Edit Post</a></span></p>
+                                            <p class="hilight"><span>ข้อมูลของที่เจอ <a class="btn btn-ghost" style="text-align: right;margin-left: 430+;margin-left: 443px;">Edit Post</a></span></p>
                                             <li class="list-group-item"><font class="fielder"><span>ประเภทสิ่งของที่พบเจอ : </span></font> สัตว์เลี้ยง</li>
                                             <li class="list-group-item"><font class="fielder"><span>วันที่พบ : </span></font> 14 กันยายน 2558</li>
                                             <li class="list-group-item"><font class="fielder"><span>ช่วงเวลาที่พบเจอ : </span></font> 10:00 น.</li>
-                                            <li class="list-group-item"><font class="fielder"><span>เพศ : </span></font> ไม่ระบุเพศ</li>
                                             <li class="list-group-item"><font class="fielder"><span>ชื่อสถานที่ : </span></font> ตึกคณะ IT</li>
                                             <li class="list-group-item"><font class="fielder"><span>รายละเอียดเพิ่มเติม : </span></font> <br>เก็บกระเป๋าตังได้ วันนี้นะค้ะ หลักฐานในกระเป๋าไม่มีนะ มีเงินจำนวนนึง กับแสตมเซเว่น ใครเป็นเจ้าของติดต่อ ไลท์ phawilai14 มาด้วยนะค้ะ (รูปที่ลงประกาศเป็นรูปสมมุติ)<br>
                                             <li class="list-group-item"><font class="fielder"><span>สถานะสิ่งของ : </span></font>ยังไม่เจอ<br></li>
