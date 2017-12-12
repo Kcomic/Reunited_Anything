@@ -77,11 +77,20 @@
             <div class="container">
                 <div class="breadcrumbs">
                     <ul class="breadcrumb">
-                        <li><a href="home.jsp">หน้าแรก</a></li>
-                        <li>พบสิ่งของ</li>
+                        <li><a href="found.jsp">รายการของหาย</a></li>
+                        <% if(session.getAttribute("post").equals("found")){ %>
+                            <li><a href="foundPost.jsp">พบเจอสิ่งของ</a></li>
+                        <% } else{ %>
+                            <li><a href="foundPost.jsp">ตามหาสิ่งของ</a></li>
+                        <% }%>
                     </ul>
                 </div>
-                <h1 class="heading">แจ้งพบเจอสิ่งของ</h1>
+                <% if(session.getAttribute("post").equals("found")){ %>
+                    <h1 class="heading">แจ้งพบเจอสิ่งของ</h1>
+                <% } else{ %>
+                    <h1 class="heading">แจ้งตามหาสิ่งของ</h1>
+                <% }%>
+                
                 <!-- <p class="lead">This is the lead paragraph of the article. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget.</p> -->
             </div>
         </section>
@@ -91,7 +100,7 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="post-content">
-
+                            
                                 <h4>ข้อมูลสิ่งของ</h4>
                                 <hr>
                                 <div class="row" style="margin-left: 180px;">
@@ -108,31 +117,30 @@
                                             <label for="inputStatus" style="float:left;">ประเภท  <span class="required">*</span></label><br>
                                             <div class="col" style="margin-right: 250px;">
                                                 <select name="type" class="selectpicker" data-live-search="true" style="float:left; width: 300px; height: 31px;">
-                                                    <option data-tokens="all">ทั้งหมด </option>
-                                                    <option data-tokens="human">คน</option>
-                                                    <option data-tokens="animal">สัตว์</option>
-
-                                                    <option data-tokens="item">สิ่งของ</option>
+                                                    <option value="all">ทั้งหมด </option>
+                                                    <option value="human">คน</option>
+                                                    <option value="animal">สัตว์</option>
+                                                    <option value="item">สิ่งของ</option>
                                                 </select> 
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-sm-5">
                                         <div class="form-group">
-                                            <label name="place" for="plase_found">สถานที่พบเจอ <span class="required">*</span></label>
-                                            <input id="plase_found" type="text" placeholder="กรุณากรอกสถานที่พบเจอ" class="form-control">
+                                            <label for="plase_found">สถานที่พบเจอ <span class="required">*</span></label>
+                                            <input name="place" id="plase_found" type="text" placeholder="กรุณากรอกสถานที่" class="form-control">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row" style="margin-left: 180px;">
 
                                     <div class="col-sm-5">
-                                        <label for="plase_found">รูปภาพ <span class="required">*</span></label>
-                                        <input type="file" name="fileImage"><br>
+                                            <label for="plase_found">รูปภาพ <span class="required">*</span></label>
+                                            <input type="file" name="fileImage"><br>
                                     </div>
                                     <div class="col-sm-5">
                                         <div class="form-group">
-                                            <label for="date_found">วัน - เวลาที่พบเจอ <span class="required">*</span></label>
+                                            <label for="date_found">วัน - เวลา <span class="required">*</span></label>
                                             <div class="row">
                                                 <div class='col-sm-3'>
                                                     <div class="form-group">
@@ -156,14 +164,14 @@
                                     </div>
                                 </div>
                                 <button type="submit" class="btn btn-primary btn-md" style="margin-left: 550px;">Submit</button>
-
-                            </div>
-                            <!-- /.post-content-->
+                                
                         </div>
+                        <!-- /.post-content-->
                     </div>
                 </div>
-            </section>
-        </form>
+            </div>
+        </section>
+            </form>
 
         <footer class="footer">
             <div class="footer__copyright">

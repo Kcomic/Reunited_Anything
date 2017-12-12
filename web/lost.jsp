@@ -145,7 +145,8 @@
                 <h1 class="heading">รายการของหาย</h1>
             </div>
             <div class="col-xs-2" style="margin-top: 5px;">
-              <button type="button" class="btn btn-primary"><i class="fa fa-plus"></i> แจ้งของหาย</button>
+                <% session.setAttribute("post", "lost"); %>
+                <a href="foundPost.jsp"><button type="button" class="btn btn-primary"><i class="fa fa-plus"></i> แจ้งของหาย</button></a>
             </div>
         </div>
         <!-- <p class="lead">This is the lead paragraph of the article. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget.</p> -->
