@@ -86,12 +86,12 @@
             </div>
         </section>
         <form enctype="multipart/form-data" action="PostServlet" method="POST">
-        <section class="section--little-padding blog-post">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="post-content">
-                            
+            <section class="section--little-padding blog-post">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="post-content">
+
                                 <h4>ข้อมูลสิ่งของ</h4>
                                 <hr>
                                 <div class="row" style="margin-left: 180px;">
@@ -127,8 +127,8 @@
                                 <div class="row" style="margin-left: 180px;">
 
                                     <div class="col-sm-5">
-                                            <label for="plase_found">รูปภาพ <span class="required">*</span></label>
-                                            <input type="file" name="fileImage"><br>
+                                        <label for="plase_found">รูปภาพ <span class="required">*</span></label>
+                                        <input type="file" name="fileImage"><br>
                                     </div>
                                     <div class="col-sm-5">
                                         <div class="form-group">
@@ -156,14 +156,14 @@
                                     </div>
                                 </div>
                                 <button type="submit" class="btn btn-primary btn-md" style="margin-left: 550px;">Submit</button>
-                                
+
+                            </div>
+                            <!-- /.post-content-->
                         </div>
-                        <!-- /.post-content-->
                     </div>
                 </div>
-            </div>
-        </section>
-            </form>
+            </section>
+        </form>
 
         <footer class="footer">
             <div class="footer__copyright">

@@ -11,6 +11,7 @@
 <!DOCTYPE html>
 <!DOCTYPE html>
 <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
   <meta charset="utf-8">
@@ -122,9 +123,17 @@
                         </div>
                         <div class="col-sm-7"><br>
                           <p class="hilight"><span>ข้อมูลของที่เจอ </span></p>
-                          <li class="list-group-item"><font class="fielder"><span>ประเภทสิ่งของที่พบเจอ : &nbsp   &nbsp  &nbsp</span></font> <input type="radio" name="type" value="H" checked="checked" /> คน &nbsp   &nbsp  &nbsp   &nbsp
-                         <input type="radio" name="type" value="A" /> สัตว์เลี้ยง &nbsp   &nbsp  &nbsp   &nbsp
-                         <input type="radio" name="type" value="I" /> สิ่งของ </span></font></li>
+                          <li class="list-group-item"><font class="fielder"><span>ประเภทสิ่งของที่พบเจอ : &nbsp;   &nbsp;  &nbsp;</span></font> 
+                                            <div class="col" style="margin-right: 250px;height: 40px;">
+                                                <select name="type" class="selectpicker" data-live-search="true" style="float:left; width: 300px; height: 31px;">
+                                                    <option data-tokens="all">ทั้งหมด </option>
+                                                    <option data-tokens="human">คน</option>
+                                                    <option data-tokens="animal">สัตว์</option>
+
+                                                    <option data-tokens="item">สิ่งของ</option>
+                                                </select> 
+                                            </div>
+                                          </li> 
                           <li class="list-group-item"><font class="fielder"><span>วันที่พบ : </span></font> 
                               <div class="form-group">
                                 <div class='col-sm-3'>
