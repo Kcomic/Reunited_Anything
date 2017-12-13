@@ -48,6 +48,7 @@ public class PostDetailServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
         response.setContentType("text/html;charset=UTF-8");
         try {
             String postId = String.valueOf(request.getParameter("post_id"));
@@ -75,25 +76,25 @@ public class PostDetailServlet extends HttpServlet {
                 PostDetail p = new PostDetail(idPost, firstName, lastName, email, date, name, pic_base64, type, place, detail, "found", time, validate, phone);
                 session.setAttribute("postDetail", p);
             }
-            String sqlComment = "SELECT Email, DateTime, detail, F_Name, L_Name FROM reunited_anything.comment join member using (Email) where idPost = ?";
+            String sqlComment = "SELECT Email, DateTime, detail, F_Name, L_Name, Uploaded FROM reunited_anything.comment join member using (Email) where idPost = ?";
             stmt = conn.prepareStatement(sqlComment);
             stmt.setInt(1, Integer.parseInt(postId));
             ResultSet rsCment = stmt.executeQuery();
             ArrayList<Comment> listComment = new ArrayList();
             while (rsCment.next()) {
-                System.out.println("aaaaaaaaaaa : "+ rs.getString(1));
-//                String email1 = rs.getString(1);
-//                DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-//                Date date = rs.getDate(2);
-//                String detail = rs.getString(3);
-//                String firstName = rs.getString(4);
-//                String LastName = rs.getString(5);
+                System.out.println("aaaaaaaaaaa : " + rsCment.getString(1));
+                String email1 = rsCment.getString(1);
+                //DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                Date date = rsCment.getDate(2);
                 
+                String detail = rsCment.getString(3);
+                String firstName = rsCment.getString(4);
+                String LastName = rsCment.getString(5);
+                int uploaded = rsCment.getInt(6);
 
-                
-             //   Comment comment = new Comment(email, dateFormat.format(date), detail, firstName, LastName, postId);
+                Comment comment = new Comment(email1, date.toString(), detail, firstName, LastName, postId, uploaded);
 
-            //    listComment.add(comment);
+                listComment.add(comment);
             }
 
             session.setAttribute("listComment", listComment);

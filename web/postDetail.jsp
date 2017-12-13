@@ -4,6 +4,8 @@
     Author     : Administrator
 --%>
 
+<%@page import="model.Comment"%>
+<%@page import="java.util.ArrayList"%>
 <%@page import="model.PostDetail"%>
 <%@page import="model.Member"%>
 <%@page import="java.util.List"%>
@@ -146,32 +148,39 @@
                                     </div> </div>
                             </div>
                             <hr>
+                            <%
+                                ArrayList<Comment> comment = (ArrayList<Comment>) session.getAttribute("listComment");
+                            %>
                             <div class="comments">
-                                <br><h4>2 comments</h4>
+                                <br><h4><%=comment.size()%> comments</h4>
+                                <%
+                                    for (Comment commentPost : comment) {
+                                %>
                                 <div class="row comment">
                                     <div class="col-sm-3 col-md-2 text-center-xs">
-                                        <p><img src="https://lovelydog108.files.wordpress.com/2012/03/beagle-dog-03-07-10-011.jpg" alt="" class="img-responsive img-circle" width="100" height="120"></p>
+                                        <%
+                                            if (commentPost.getUploaded() == 0) {
+                                        %>
+                                        <p><img src="http://cumbrianrun.co.uk/wp-content/uploads/2014/02/default-placeholder-300x300.png" alt="" class="img-responsive img-circle" width="100" height="120"></p>
+                                            <%}%>
+
+                                        <%
+                                            if (commentPost.getUploaded() == 1) {
+                                        %>
+                                        <p><img src="img/<%=commentPost.getEmail()%>.jpg" alt="" class="img-responsive img-circle" width="100" height="120"></p>
+                                            <%}%>
                                     </div>
                                     <div class="col-sm-9 col-md-10">
-                                        <h6>หมาน้อย</h6>
-                                        <p class="posted"><i class="fa fa-clock-o"></i> September 23, 2011 at 12:00 am</p>
-                                        <p class="text-gray"><FONT SIZE=2> ผมเจอครับเดี๋ยวเอาไปให้นะจุ๊ฟๆ</FONT> </p>
-                                        <p class="reply"><a href="#"><i class="fa fa-reply"></i> Reply</a></p>
+                                        <h6><%=commentPost.getName()%></h6>
+                                        <p class="posted"><i class="fa fa-clock-o"></i> <%=commentPost.getDateTime()%></p>
+                                        <p class="text-gray"><FONT SIZE=2> <%=commentPost.getDetail()%></FONT> </p>
+
                                     </div>
                                 </div>
-                                <!-- /.comment-->
-                                <div class="row comment last">
-                                    <div class="col-sm-3 col-md-2 text-center-xs">
-                                        <p><img src="https://simg.kapook.com/o/photo/1004/kapook_world-1000231.jpg" alt="" class="img-responsive img-circle" width="100" height="120" ></p>
-                                    </div>
-                                    <div class="col-sm-9 col-md-10">
-                                        <h6>แมวน้อย</h6>
-                                        <p class="posted"><i class="fa fa-clock-o"></i><FONT SIZE=2> September 23, 2012 at 12:00 am</p>
-                                        <p class="text-gray">ขอบคุณมากเลยค่ะ ม๊วฟๆ</font></p>
-                                        <p class="reply"><a href="#"><i class="fa fa-reply"></i> Reply</a></p>
-                                    </div>
-                                </div>
-                                <!-- /.comment-->
+                                <%
+                                    }
+                                %>
+
                             </div>
                             <div class="comment-form">
                                 <form action="PostCommentServlet?post_id=<%=post.getId()%>" method="POST">

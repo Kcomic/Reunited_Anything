@@ -47,6 +47,7 @@ public class SaveEditServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
+        request.setCharacterEncoding("UTF-8");
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             String place = String.valueOf(request.getParameter("place"));
@@ -58,7 +59,7 @@ public class SaveEditServlet extends HttpServlet {
             HttpSession session = request.getSession();
             Member member = (Member) session.getAttribute("member");
 
-            convertTime(dateTime, out);
+            convertTime(dateTime, out, response);
             String sql = "UPDATE `reunited_anything`.`post` SET `Date`= ?, `Type`= ?, `Place`= ?, `Detail`= ?, `Time`= ?, `Validate`= ? WHERE `idPost`= ?";
 
             String sql1 = "UPDATE `reunited_anything`.`post` SET `Type`= ?, `Place`= ?, `Detail`= ?, `Validate`=?, `Date`=?, `Time`=? WHERE `idPost`= ?";
@@ -69,7 +70,7 @@ public class SaveEditServlet extends HttpServlet {
             stmt.setString(3, place);
             stmt.setString(4, detail);
             stmt.setString(5, time);
-            stmt.setString(6, validate);         
+            stmt.setString(6, validate);
             stmt.setString(7, postId);
             stmt.executeUpdate();
 
@@ -85,7 +86,7 @@ public class SaveEditServlet extends HttpServlet {
         }
     }
 
-    private void convertTime(String datetime, PrintWriter out) {
+    private void convertTime(String datetime, PrintWriter out, HttpServletResponse response) throws IOException {
         date = datetime.split(" ")[0];
         final String OLD_FORMAT = "dd-MM-yyyy";
         final String NEW_FORMAT = "yyyy-MM-dd";
@@ -95,7 +96,7 @@ public class SaveEditServlet extends HttpServlet {
             sdf.applyPattern(NEW_FORMAT);
             date = sdf.format(d);
         } catch (ParseException ex) {
-            
+            response.sendRedirect("HomeServlet");
         }
         time = datetime.split(" ")[1];
         time = time.replace("-", ":");

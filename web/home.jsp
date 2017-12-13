@@ -203,6 +203,7 @@
                 <h2 style="text-align:center;">ของที่มีคนพบ</h2>
                 <div class="list-group">
                     <%
+                      
                         List<Post> found_posts = (List<Post>) session.getAttribute("found_posts");
                         if (found_posts != null) {
                             for (Post post : found_posts) {

@@ -15,15 +15,30 @@ public class Comment {
     private String detail;
     private String name;
     private String postId;
+    private int uploaded;
 
-    public Comment(String email, String dateTime, String detail, String firstname, String lastname, String postId) {
+    public Comment(String email, String dateTime, String detail, String fname, String lname, String postId, int uploaded) {
         this.email = email;
         this.dateTime = dateTime;
         this.detail = detail;
-        this.name = firstname+" "+lastname;
+        this.name = fname+" "+lname;
         this.postId = postId;
+        this.uploaded = uploaded;
     }
 
+   
+
+  
+
+    public int getUploaded() {
+        return uploaded;
+    }
+
+    public void setUploaded(int uploaded) {
+        this.uploaded = uploaded;
+    }
+
+    
     public String getEmail() {
         return email;
     }
