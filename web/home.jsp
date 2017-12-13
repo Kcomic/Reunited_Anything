@@ -98,7 +98,7 @@
         <% }
             if (chk == 0) {
         %> 
-        <a href="#"><i class="fa fa-user"></i> <%=FirstName%> </a>
+        <a href="ProfileServlet"><i class="fa fa-user"></i> <%=FirstName%> </a>
         <a href="LogoutServlet" class="btn navbar-btn btn-ghost"><i class="fa fa-sign-out"></i>ออกจากระบบ</a>
     </div>
 </div>
