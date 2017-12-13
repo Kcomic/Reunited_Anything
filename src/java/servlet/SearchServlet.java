@@ -53,7 +53,7 @@ public class SearchServlet extends HttpServlet {
                 status = "";
             }
             
-            String sql = "select * from post where status like ? and type like ? and place like ? and detail like ?";
+            String sql = "select idPost, Email, Date, Name, Pic_base64, Type, Place, Detail, F_Name, Time, Validate from post join member using (Email) where status like ? and type like ? and place like ? and detail like ? order by Date DESC, Time DESC";
             System.out.println("create stmt...");
             PreparedStatement stmt = conn.prepareStatement(sql);
             

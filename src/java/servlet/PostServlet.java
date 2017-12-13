@@ -76,20 +76,6 @@ public class PostServlet extends HttpServlet {
 
     private void convertTime(String datetime, PrintWriter out) {
         date = datetime.split(" ")[0];
-        final String OLD_FORMAT = "dd-MM-yyyy";
-        final String NEW_FORMAT = "yyyy-MM-dd";
-        SimpleDateFormat sdf = new SimpleDateFormat(OLD_FORMAT);
-        try {
-            Date d = sdf.parse(date);
-            sdf.applyPattern(NEW_FORMAT);
-            date = sdf.format(d);
-        } catch (ParseException ex) {
-            System.out.println("time catch");
-            out.println("<script type=\"text/javascript\">");
-            out.println("alert('Please complete the informations');");
-            out.println("location='home.jsp';");
-            out.println("</script>");
-        }
         time = datetime.split(" ")[1];
         time = time.replace("-", ":");
         time = time + ":00:0000";
