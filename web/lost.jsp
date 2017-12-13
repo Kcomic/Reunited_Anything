@@ -189,7 +189,7 @@
                         }else{
                             email = "no";
                         }
-                    List<Post> posts = (List<Post>) session.getAttribute("posts");
+                    List<Post> posts = (List<Post>) session.getAttribute("LostPosts");
 
                         if (posts != null) {
                             for (Post post : posts) {

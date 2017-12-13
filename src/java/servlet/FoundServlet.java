@@ -68,6 +68,7 @@ public class FoundServlet extends HttpServlet {
                 String first_name = rs.getString(9);
                 String time = rs.getString(10);
                 String validate = rs.getString(11);
+              
                 Post p = new Post(idPost, first_name, email, date, name, pic_base64, type, place, detail, "found", time, validate);
                 foundPosts.add(p);
             }

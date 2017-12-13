@@ -189,9 +189,10 @@
                         }else{
                             email = "no";
                         }
-                      List<Post> found_posts = (List<Post>) session.getAttribute("found_posts");
+                      List<Post> found_posts = (List<Post>) session.getAttribute("foundPosts");
                         if (found_posts != null) {
                             for (Post post : found_posts) {
+                                System.out.println(post.getValidate());
                     %>
                      <a href="PostDetailServlet?post_id=<%= post.getId()%>&email=<%=email%>" class="list-group-item">
                     <div class="col-xs-2" style="width: 100px;padding-left: 0px;">
