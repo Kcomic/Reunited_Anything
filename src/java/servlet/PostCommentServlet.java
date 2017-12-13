@@ -7,6 +7,7 @@ package servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import static java.lang.System.out;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -49,6 +50,7 @@ public class PostCommentServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             String comment = String.valueOf(request.getParameter("comment"));
@@ -56,7 +58,7 @@ public class PostCommentServlet extends HttpServlet {
             DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
             Date date = new Date();
             System.out.println(dateFormat.format(date)); //2016/11/16 12:08:43
-            
+
             HttpSession session = request.getSession();
             Member member = (Member) session.getAttribute("member");
 
@@ -71,7 +73,11 @@ public class PostCommentServlet extends HttpServlet {
             response.sendRedirect("home.jsp");
             // response.sendRedirect("PostDetailServlet?post_id=" + postId + "&email=" + member.getEmail());
         } catch (Exception e) {
-
+            System.out.println("time catch");
+            out.println("<script type=\"text/javascript\">");
+            out.println("alert('Please login');");
+            out.println("location='HomeServlet';");
+            out.println("</script>");
         }
     }
 
@@ -85,7 +91,11 @@ public class PostCommentServlet extends HttpServlet {
             sdf.applyPattern(NEW_FORMAT);
             date = sdf.format(d);
         } catch (ParseException ex) {
-
+            System.out.println("time catch");
+            out.println("<script type=\"text/javascript\">");
+            out.println("alert('Please login');");
+            out.println("location='HomeServlet';");
+            out.println("</script>");
         }
         time = datetime.split(" ")[1];
         time = time.replace("-", ":");

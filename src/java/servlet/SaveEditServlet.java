@@ -7,6 +7,7 @@ package servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import static java.lang.System.out;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -76,7 +77,11 @@ public class SaveEditServlet extends HttpServlet {
             System.out.println("Comment : "+detail);
             response.sendRedirect("PostDetailServlet?post_id=" + postId + "&email=" + member.getEmail());
         } catch (Exception e) {
-
+            System.out.println("time catch");
+            out.println("<script type=\"text/javascript\">");
+            out.println("alert('Please login');");
+            out.println("location='HomeServlet';");
+            out.println("</script>");
         }
     }
 
