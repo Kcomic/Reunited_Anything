@@ -70,7 +70,7 @@ public class PostCommentServlet extends HttpServlet {
             stmt.setInt(4, postId);
             stmt.executeUpdate();
 
-            response.sendRedirect("home.jsp");
+            response.sendRedirect("PostDetailServlet?post_id="+postId+"&email="+member.getEmail());
             // response.sendRedirect("PostDetailServlet?post_id=" + postId + "&email=" + member.getEmail());
         } catch (Exception e) {
             System.out.println("time catch");

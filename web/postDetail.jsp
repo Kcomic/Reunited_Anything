@@ -77,7 +77,10 @@
                         <li>พบสิ่งของ</li>
                     </ul>
                 </div>
-                <h1 class="heading">น้องแมวหนูหาย เหลือแต่ไฟฉาย</h1>
+                <%
+                    PostDetail post = (PostDetail) session.getAttribute("postDetail");
+                %>
+                <h1 class="heading"><%=post.getName()%></h1>
                 <!-- <p class="lead">This is the lead paragraph of the article. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget.</p> -->
             </div>
         </section>
@@ -116,9 +119,7 @@
                             <div class="lostlist_box panel panel-info">
                                 <div class="active_list_content">
                                     <div class="row">
-                                        <%
-                                            PostDetail post = (PostDetail) session.getAttribute("postDetail");
-                                        %>
+
                                         <div class="col-sm-5"> <center><div class="box"><a href="https://i.ytimg.com/vi/I9YrKY_jrAY/maxresdefault.jpg" title="" data-lightbox="portfolio" data-title="น้องแมว"><img src="img/<%=post.getId()%>.jpg" alt="" class="img-responsive" width="500" height="300"></a></div> </center>
                                         </div>
                                         <div class="col-sm-7"><br>
@@ -150,6 +151,7 @@
                             <hr>
                             <%
                                 ArrayList<Comment> comment = (ArrayList<Comment>) session.getAttribute("listComment");
+                                Member user = (Member) session.getAttribute("member");
                             %>
                             <div class="comments">
                                 <br><h4><%=comment.size()%> comments</h4>
@@ -182,6 +184,9 @@
                                 %>
 
                             </div>
+                            <%
+                                if (user != null) {
+                            %>
                             <div class="comment-form">
                                 <form action="PostCommentServlet?post_id=<%=post.getId()%>" method="POST">
 
@@ -204,6 +209,9 @@
                                 </form>
 
                             </div><br><br>
+                            <%
+                                }
+                            %>
                             </body>
                             </center>
 
