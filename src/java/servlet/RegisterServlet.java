@@ -59,17 +59,19 @@ public class RegisterServlet extends HttpServlet {
                 }
             }
 
-            /* TODO output your page here. You may use following sample code. */
             if (chk == 0 && chk_info == 0 && password.equals(c_password)) {
-                sql = "insert into member (Email, Password, F_Name, L_Name, Phone, Facebook) values (?, ?, ?, ?, ?, ?)";
+                System.out.println("go to insert");
+                sql = "INSERT INTO `reunited_anything`.`member` (`Password`, `Email`, `F_Name`, `L_Name`, `Phone`, `Facebook`, `Uploaded`) VALUES (?, ?, ?, ?, ?, 'fb.me/Kcomic', 0)";
                 stmt = conn.prepareStatement(sql);
-                stmt.setString(1, username);
-                stmt.setString(2, password);
+                System.out.println(username+password+first_name+last_name+phone);
+                stmt.setString(1, password);
+                stmt.setString(2, username);
                 stmt.setString(3, first_name);
                 stmt.setString(4, last_name);
                 stmt.setString(5, phone);
-                stmt.setString(6, "fb.me/Kcomic");
+                System.out.println("test1");
                 stmt.executeUpdate();
+                System.out.println("test2");
                 RequestDispatcher rd = request.getRequestDispatcher("Login.do");
                 request.setAttribute("username", username);
                 request.setAttribute("password", password);
