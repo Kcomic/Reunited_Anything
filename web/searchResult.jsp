@@ -49,10 +49,10 @@
           <div id="navigation" class="collapse navbar-collapse navbar-right">
             <ul class="nav navbar-nav">
               <li><a href="HomeServlet">หน้าหลัก</a></li>
-              <li class="active"><a href=>ค้นหา</a></li>
+              <li class="active"><a href=search.jsp>ค้นหา</a></li>
               <li><a href=LostServlet>รายการของที่ตามหา</a></li>
               <li><a href=FoundServlet>รายการของที่พบ</a></li>
-              <li><a href="register.html">สมัครสมาชิก</a></li>
+             
             </ul>
           </div>
         </div>
