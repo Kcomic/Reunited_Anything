@@ -111,7 +111,7 @@
                         }else{
                             email = "no";
                         }
-                     List<Post> posts = (List<Post>) session.getAttribute("foundPosts");
+                     List<Post> posts = (List<Post>) session.getAttribute("searchPosts");
                         if (posts != null) {
                             for (Post post : posts){
                         %>
@@ -177,7 +177,7 @@
     </section>
     
     <footer class="footer">
-      <div class="footer__copyright" style="position: absolute;left: 0;bottom: 0;width: 100%;">
+      <div class="footer__copyright">
         <div class="container">
           <div class="row">
             <div class="col-md-6">

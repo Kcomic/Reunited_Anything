@@ -52,6 +52,7 @@ public class Post {
         this.time = time;
         this.validate = validate;
     }
+   
 
     
 

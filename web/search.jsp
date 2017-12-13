@@ -79,7 +79,7 @@
         <div class="row" style="margin-right: 0px;">
           <div class="col-sm-12">
             <div class="post-content">
-              <form>
+                <form action="SearchServlet" method="GET">
               <!-- <h4>ค้นหารายการของ</h4>
                 <hr> -->
                 <div class="row">
@@ -88,9 +88,9 @@
                       <div class="col-sm-3" style="padding-left: 0px;">
                         <label for="inputStatus">ต้องการค้นหา</label>
                       </div>
-                      <label class="radio-inline"><input type="radio" style="margin-top: 7px;" checked="checked" name="optradio">ทั้งหมด</label>
-                      <label class="radio-inline"><input type="radio" style="margin-top: 7px;" name="optradio">ของหาย</label>
-                      <label class="radio-inline"><input type="radio" style="margin-top: 7px;" name="optradio">ของที่พบ</label>
+                        <label class="radio-inline"><input name="status" value="all" type="radio" style="margin-top: 7px;" checked="checked" name="optradio">ทั้งหมด</label>
+                      <label class="radio-inline"><input name="status" value="lost" type="radio" style="margin-top: 7px;" name="optradio">ของหาย</label>
+                      <label class="radio-inline"><input name="status" value="found" type="radio" style="margin-top: 7px;" name="optradio">ของที่พบ</label>
                     </div>
                   </div>
                 </div>
@@ -99,11 +99,11 @@
             <div class="form-group row">
               <label for="inputStatus" style="float:left;">ประเภท</label>
                       <div class="col-sm-2">
-                        <select class="selectpicker" data-live-search="true" style="float:left; width: 150px; height: 31px;">
-                            <option data-tokens="ketchup mustard">ทั้งหมด </option>
-                            <option data-tokens="mustard">คน</option>
-                            <option data-tokens="frosting">สัตว์</option>
-                            <option data-tokens="frosting">สิ่งของ</option>
+                        <select name="type" class="selectpicker" data-live-search="true" style="float:left; width: 150px; height: 31px;">
+                            <option value="all">ทั้งหมด </option>
+                            <option value="human">คน</option>
+                            <option value="animal">สัตว์</option>
+                            <option value="item">สิ่งของ</option>
                         </select>
                       </div>
                       </div>
@@ -115,7 +115,7 @@
                       <div class="col-sm-3" style="padding-left: 0px;">
                         <label for="inputStatus">สถานที่</label>
                       </div>
-                      <input type="text" placeholder="สถานที่" class="form-control">
+                      <input name="place" type="text" placeholder="สถานที่" class="form-control">
                     </div>
                   </div>
                 </div>
@@ -126,14 +126,14 @@
                       <div class="col-sm-3" style="padding-left: 0px;">
                         <label for="inputStatus">รายละเอียด</label>
                       </div>
-                      <input type="text" placeholder="รายละเอียด" class="form-control">
+                      <input name="detail" type="text" placeholder="รายละเอียด" class="form-control">
                     </div>
                   </div>
                 </div>
 
                 <div class="row">
-                  <div class="col-sm-12">
-                    <button type="button" class="btn btn-primary"><i class="fa fa-search"></i>ค้นหา</button>
+                  <div class="col-sm-12" style="margin-left: 325px;">
+                    <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i>ค้นหา</button>
                   </div>
                 </div>
               </form>
