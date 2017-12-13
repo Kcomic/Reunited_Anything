@@ -208,7 +208,7 @@
                         if (found_posts != null) {
                             for (Post post : found_posts) {
                     %>
-                    <a href="PostDetailServlet?post_id= <%= post.getId()%>&email=<%=email%>" class="list-group-item">
+                     <a href="PostDetailServlet?post_id=<%= post.getId()%>&email=<%=email%>" class="list-group-item">
                         <div class="col-xs-3">
                             <figure class="pull-left">
                                 <img class="media-object img-rounded img-responsive img-resize"  src="img/<%=post.getId()%>.jpg" alt="" >

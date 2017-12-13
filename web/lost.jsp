@@ -189,11 +189,12 @@
                         }else{
                             email = "no";
                         }
-                     List<Post> posts = (List<Post>) session.getAttribute("LostPosts");
+                    List<Post> posts = (List<Post>) session.getAttribute("posts");
+
                         if (posts != null) {
-                            for (Post post : posts){
-                        %>
-                 <a href="PostDetailServlet?post_id= <%= post.getId() %>&email=<%=email%>" class="list-group-item">
+                            for (Post post : posts) {
+                    %>
+                    <a href="PostDetailServlet?post_id=<%= post.getId()%>&email=<%=email%>" class="list-group-item">
                     <div class="col-xs-2" style="width: 100px;padding-left: 0px;">
                          <figure class="pull-left">
                         <img class="media-object img-rounded img-responsive img-resize"  src="img/<%=post.getId()%>.jpg" alt="" >

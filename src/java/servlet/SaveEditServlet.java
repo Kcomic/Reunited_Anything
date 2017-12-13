@@ -47,7 +47,6 @@ public class SaveEditServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
-        request.setCharacterEncoding("UTF-8");
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             String place = String.valueOf(request.getParameter("place"));
@@ -58,11 +57,11 @@ public class SaveEditServlet extends HttpServlet {
             String postId = String.valueOf(request.getParameter("post_id"));
             HttpSession session = request.getSession();
             Member member = (Member) session.getAttribute("member");
+            
 
-            convertTime(dateTime, out, response);
+            convertTime(dateTime, out);
             String sql = "UPDATE `reunited_anything`.`post` SET `Date`= ?, `Type`= ?, `Place`= ?, `Detail`= ?, `Time`= ?, `Validate`= ? WHERE `idPost`= ?";
 
-            String sql1 = "UPDATE `reunited_anything`.`post` SET `Type`= ?, `Place`= ?, `Detail`= ?, `Validate`=?, `Date`=?, `Time`=? WHERE `idPost`= ?";
 
             PreparedStatement stmt = conn.prepareStatement(sql);
             stmt.setString(1, date);
@@ -70,23 +69,18 @@ public class SaveEditServlet extends HttpServlet {
             stmt.setString(3, place);
             stmt.setString(4, detail);
             stmt.setString(5, time);
-            stmt.setString(6, validate);
+            stmt.setString(6, validate);         
             stmt.setString(7, postId);
             stmt.executeUpdate();
 
-            out.println("postId :" + postId);
-            out.println("place :" + place);
-            out.println("type :" + type);
-            out.println("dateTime :" + dateTime);
-            out.println("detail :" + detail);
-            out.println("validate :" + validate);
+            System.out.println("Comment : "+detail);
             response.sendRedirect("PostDetailServlet?post_id=" + postId + "&email=" + member.getEmail());
         } catch (Exception e) {
 
         }
     }
 
-    private void convertTime(String datetime, PrintWriter out, HttpServletResponse response) throws IOException {
+    private void convertTime(String datetime, PrintWriter out) {
         date = datetime.split(" ")[0];
         final String OLD_FORMAT = "dd-MM-yyyy";
         final String NEW_FORMAT = "yyyy-MM-dd";
@@ -96,7 +90,7 @@ public class SaveEditServlet extends HttpServlet {
             sdf.applyPattern(NEW_FORMAT);
             date = sdf.format(d);
         } catch (ParseException ex) {
-            response.sendRedirect("HomeServlet");
+            
         }
         time = datetime.split(" ")[1];
         time = time.replace("-", ":");
