@@ -99,7 +99,6 @@ public class PostCommentServlet extends HttpServlet {
         }
         time = datetime.split(" ")[1];
         time = time.replace("-", ":");
-        time = time + ":00:0000";
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

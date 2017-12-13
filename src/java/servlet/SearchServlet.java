@@ -10,7 +10,10 @@ import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -25,6 +28,7 @@ import model.Post;
 public class SearchServlet extends HttpServlet {
 
     private Connection conn;
+    private String date;
 
     public void init() {
         conn = (Connection) getServletContext().getAttribute("connection");
@@ -34,6 +38,7 @@ public class SearchServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
+        
         try {
             HttpSession session = request.getSession();
             String status = request.getParameter("status");
@@ -69,7 +74,8 @@ public class SearchServlet extends HttpServlet {
             while (rs.next()) {
                 int idPost = rs.getInt(1);
                 String email = rs.getString(2);
-                String date = rs.getString(3);
+                date = rs.getString(3);
+                convertDate();
                 String name = rs.getString(4);
                 String pic_base64 = rs.getString(5);
                 type = rs.getString(6);
@@ -85,6 +91,19 @@ public class SearchServlet extends HttpServlet {
             response.sendRedirect("searchResult.jsp");
         } catch (Exception e) {
             System.out.println("database error");
+        }
+    }
+    
+    private void convertDate() {
+        final String OLD_FORMAT = "yyyy-MM-dd";
+        final String NEW_FORMAT = "dd-MM-yyyy";
+        SimpleDateFormat sdf = new SimpleDateFormat(OLD_FORMAT);
+        try {
+            Date d = sdf.parse(date);
+            sdf.applyPattern(NEW_FORMAT);
+            date = sdf.format(d);
+        } catch (ParseException ex) {
+
         }
     }
 

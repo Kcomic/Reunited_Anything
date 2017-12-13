@@ -63,6 +63,7 @@ public class SaveEditServlet extends HttpServlet {
             convertTime(dateTime, out);
             String sql = "UPDATE `reunited_anything`.`post` SET `Date`= ?, `Type`= ?, `Place`= ?, `Detail`= ?, `Time`= ?, `Validate`= ? WHERE `idPost`= ?";
 
+
             PreparedStatement stmt = conn.prepareStatement(sql);
             stmt.setString(1, date);
             stmt.setString(2, type);
@@ -86,6 +87,16 @@ public class SaveEditServlet extends HttpServlet {
 
     private void convertTime(String datetime, PrintWriter out) {
         date = datetime.split(" ")[0];
+        final String OLD_FORMAT = "dd-MM-yyyy";
+        final String NEW_FORMAT = "yyyy-MM-dd";
+        SimpleDateFormat sdf = new SimpleDateFormat(OLD_FORMAT);
+        try {
+            Date d = sdf.parse(date);
+            sdf.applyPattern(NEW_FORMAT);
+            date = sdf.format(d);
+        } catch (ParseException ex) {
+            
+        }
         time = datetime.split(" ")[1];
         time = time.replace("-", ":");
     }

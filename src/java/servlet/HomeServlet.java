@@ -10,7 +10,10 @@ import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -28,7 +31,7 @@ import model.Post;
 public class HomeServlet extends HttpServlet {
 
     private Connection conn;
-    
+    private String date;
 
     public void init() {
         conn = (Connection) getServletContext().getAttribute("connection");
@@ -48,7 +51,8 @@ public class HomeServlet extends HttpServlet {
             while (rs.next()) {
                 int idPost = rs.getInt(1);
                 String email = rs.getString(2);
-                String date = rs.getString(3);
+                date = rs.getString(3);
+                convertDate();
                 String name = rs.getString(4);
                 String pic_base64 = rs.getString(5);
                 String type = rs.getString(6);
@@ -67,7 +71,8 @@ public class HomeServlet extends HttpServlet {
             while (rs.next()) {
                 int idPost = rs.getInt(1);
                 String email = rs.getString(2);
-                String date = rs.getString(3);
+                date = rs.getString(3);
+                convertDate();
                 String name = rs.getString(4);
                 String pic_base64 = rs.getString(5);
                 String type = rs.getString(6);
@@ -86,7 +91,19 @@ public class HomeServlet extends HttpServlet {
 
         }
     }
+    
+    private void convertDate() {
+        final String OLD_FORMAT = "yyyy-MM-dd";
+        final String NEW_FORMAT = "dd-MM-yyyy";
+        SimpleDateFormat sdf = new SimpleDateFormat(OLD_FORMAT);
+        try {
+            Date d = sdf.parse(date);
+            sdf.applyPattern(NEW_FORMAT);
+            date = sdf.format(d);
+        } catch (ParseException ex) {
 
+        }
+    }
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.

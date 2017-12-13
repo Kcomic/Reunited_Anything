@@ -10,7 +10,10 @@ import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -25,12 +28,14 @@ import model.Post;
  */
 @WebServlet(name = "FoundServlet", urlPatterns = {"/FoundServlet"})
 public class FoundServlet extends HttpServlet {
-private Connection conn;
+
+    private Connection conn;
+    private String date;
 
     public void init() {
         conn = (Connection) getServletContext().getAttribute("connection");
     }
-    
+
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -50,10 +55,11 @@ private Connection conn;
             stmt.setString(1, "found");
             ResultSet rs = stmt.executeQuery();
             ArrayList<Post> foundPosts = new ArrayList();
-            while(rs.next()){
+            while (rs.next()) {
                 int idPost = rs.getInt(1);
                 String email = rs.getString(2);
-                String date = rs.getString(3);
+                date = rs.getString(3);
+                convertDate();
                 String name = rs.getString(4);
                 String pic_base64 = rs.getString(5);
                 String type = rs.getString(6);
@@ -68,8 +74,21 @@ private Connection conn;
             session.setAttribute("foundPosts", foundPosts);
             System.out.println("FoundPosts : " + foundPosts.size());
             response.sendRedirect("found.jsp");
-        } catch(Exception e){
-        
+        } catch (Exception e) {
+
+        }
+    }
+
+    private void convertDate() {
+        final String OLD_FORMAT = "yyyy-MM-dd";
+        final String NEW_FORMAT = "dd-MM-yyyy";
+        SimpleDateFormat sdf = new SimpleDateFormat(OLD_FORMAT);
+        try {
+            Date d = sdf.parse(date);
+            sdf.applyPattern(NEW_FORMAT);
+            date = sdf.format(d);
+        } catch (ParseException ex) {
+
         }
     }
 
